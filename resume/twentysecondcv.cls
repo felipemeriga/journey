@@ -221,8 +221,14 @@
               \begin{array}{l}
               {\href{\cvsite}{\includegraphics[scale=0.07]{img/git.png}}}
               \end{array}
-              $} 
-            & \cvsite\\}
+              $}
+            & \href{\cvsite}{github.com/felipemeriga}\\}
+            {$
+              \begin{array}{l}
+              {\href{https://felipe.merigafy.com}{\includegraphics[scale=0.033]{img/globe-512.png}}}
+              \end{array}
+              $}
+            & \href{https://felipe.merigafy.com}{felipe.merigafy.com}\\
       \ifthenelse{\equal{\cvmail}{}}{}{
             {$
               \begin{array}{l}
