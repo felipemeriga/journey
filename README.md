@@ -4,6 +4,21 @@
 
 > Senior software engineer with **7+ years** building distributed systems, real-time media, and low-level backend infrastructure — primarily in **Rust** and **Go**. I work where performance, concurrency, and correctness matter: GPU-accelerated video, live-streaming platforms, blockchain protocols, and applied AI (agentic workflows, long-term memory, RAG).
 
+---
+
+### 📖 About this repository — `journey`
+
+**This repo is a living knowledge base of my entire career.** It's the single place where everything about my professional life is gathered, kept current, and version-controlled:
+
+- **Career overview** — this README: roles, projects, skills, and a full timeline from 2015 to now.
+- **Deep-dive highlights** — detailed writeups of the work I'm most proud of ([`highlights/`](highlights/)).
+- **Résumé & profile** — my LaTeX résumé ([`resume/`](resume/)) and LinkedIn ([`linkedin/`](linkedin/)).
+- **My portfolio site** — the source for my personal site, built from these same materials ([`web/`](web/)).
+
+It grows over time: as I ship new work, take on new roles, or start new projects, they land here. Think of it less as a static profile and more as the source of truth for my career.
+
+---
+
 📍 Londrina, Paraná, Brazil  ·  🌎 Working remotely with teams across the US and Europe
 
 | | |
