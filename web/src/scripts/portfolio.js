@@ -53,11 +53,11 @@
   (DENSE_TIMELINE ? roles : roles.slice(0, 5)).forEach(r => {
     const d = document.createElement('div');
     d.setAttribute('data-reveal', '');
-    d.style.cssText = 'display:grid;grid-template-columns:minmax(120px,160px) minmax(0,1.2fr) minmax(0,1fr);gap:var(--space-4);padding:var(--space-3) 0;border-bottom:1px solid var(--color-divider);font-size:15px;line-height:24px;align-items:baseline';
+    d.className = 'tl-row';
     d.innerHTML =
-      `<div style="font-feature-settings:'tnum' 1;color:var(--color-neutral-700);font-size:13px;letter-spacing:0.04em">${esc(r.period)}</div>` +
+      `<div class="tl-period" style="font-feature-settings:'tnum' 1;color:var(--color-neutral-700);font-size:13px;letter-spacing:0.04em">${esc(r.period)}</div>` +
       `<div><strong>${esc(r.role)}</strong><span style="color:var(--color-neutral-700)"> — ${esc(r.company)}</span></div>` +
-      `<div style="font-size:13px;color:var(--color-neutral-700)">${esc(r.stack)}</div>`;
+      `<div class="tl-stack" style="font-size:13px;color:var(--color-neutral-700)">${esc(r.stack)}</div>`;
     rows.appendChild(d);
   });
 
@@ -179,7 +179,7 @@
   const loop = now => {
     const mode = MOTION, speed = mode === 'calm' ? 0.5 : 1;
     const t = (now - t0) / 1000 * speed; frame++;
-    canvases.forEach(o => { const r = o.c.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return; o.ctx.clearRect(0, 0, o.W, o.H); o.fn(o.ctx, o.W, o.H, t, frame, o.state); });
+    canvases.forEach(o => { const r = o.c.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight || r.width === 0 || r.height === 0) return; o.ctx.clearRect(0, 0, o.W, o.H); o.fn(o.ctx, o.W, o.H, t, frame, o.state); });
     if (mode !== 'off') raf = requestAnimationFrame(loop); else stopped = true;
   };
   // wait for the webfont so text metrics/measure are correct on first frames

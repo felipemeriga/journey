@@ -24,6 +24,35 @@ a:hover { color: var(--color-accent-600); }
   html { scroll-behavior: auto; }
 }
 
+/* ── career timeline rows + education (responsive) ── */
+.tl-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 160px) minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-divider);
+  font-size: 15px;
+  line-height: 24px;
+  align-items: baseline;
+}
+.edu-grid {
+  display: grid;
+  grid-template-columns: minmax(120px, 160px) minmax(0, 1fr);
+  gap: var(--space-4);
+  align-items: baseline;
+}
+
+@media (max-width: 680px) {
+  /* stack each career entry so the role and stack are readable, not squished */
+  .tl-row { grid-template-columns: 1fr; gap: 2px; align-items: start; padding: var(--space-4) 0; }
+  .tl-row .tl-period { margin-bottom: var(--space-1); }
+  .tl-row .tl-stack { margin-top: var(--space-2); }
+  /* the animated timeline strip doesn't fit a phone — drop it on small screens */
+  .tl-anim { display: none; }
+  /* stack the education label above its content */
+  .edu-grid { grid-template-columns: 1fr; gap: var(--space-2); }
+}
+
 /* ── blog prose (Modernist idiom: flat, 2px rules, accent links) ── */
 .prose { font-size: 17px; line-height: 1.7; max-width: 68ch; }
 .prose > * + * { margin-top: var(--space-4); }
