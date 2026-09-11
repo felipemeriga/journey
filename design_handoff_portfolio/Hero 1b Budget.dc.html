@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-67b5d5e6-76ab-400a-a2b1-6c7c7d6e56c1/styles.css">
+<script src="_ds/modernist-67b5d5e6-76ab-400a-a2b1-6c7c7d6e56c1/_ds_bundle.js"></script>
+<style>body{margin:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);text-wrap:pretty}a{color:var(--color-accent)}a:hover{color:var(--color-accent-600)}</style>
+</helmet>
+<div style="min-height:100vh;display:flex;flex-direction:column">
+  <nav class="nav" style="padding-inline:clamp(20px,5vw,72px)">
+    <span class="nav-brand">Felipe Ramos da Silva</span>
+    <a href="#work">Work</a><a href="#projects">Projects</a><a href="#timeline">Timeline</a><a href="#contact">Contact</a>
+  </nav>
+  <div style="flex:1;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(320px,1fr)">
+    <div style="padding:clamp(40px,7vw,104px) clamp(20px,5vw,72px);display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-8)">
+      <div>
+        <div style="display:flex;gap:var(--space-2);align-items:center;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700)"><span style="width:10px;height:10px;background:var(--color-accent);display:inline-block"></span>Senior Rust &amp; Go Engineer</div>
+        <h1 style="font-size:clamp(48px,6.4vw,112px);line-height:0.98;letter-spacing:-0.03em;margin:var(--space-4) 0 0 -0.058em"><span style="display:block">Every frame</span><span style="display:block">has 16.7 ms.</span><span style="display:block;color:var(--color-accent)">I spend it well.</span></h1>
+      </div>
+      <div>
+        <p style="font-size:17px;line-height:28px;max-width:52ch;margin:0">Real-time media, distributed systems and low-level backends in Rust and Go. GPU video pipelines at Cosm, live-streaming infrastructure at FOX, and protocols written from the bytes up.</p>
+        <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-6)">
+          <a class="btn btn-primary" href="#work" style="justify-content:flex-start;min-width:180px">See the work →</a>
+          <a class="btn btn-secondary" href="#" style="justify-content:flex-start;min-width:180px">Résumé (PDF)</a>
+        </div>
+      </div>
+    </div>
+    <div style="position:relative;background:var(--color-accent);min-height:420px;overflow:hidden">
+      <canvas ref="{{ canvasRef }}" style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas>
+    </div>
+  </div>
+  <div style="border-top:2px solid var(--color-divider);padding:var(--space-3) clamp(20px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:var(--space-4);font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-feature-settings:'tnum' 1">
+    <div><span style="color:var(--color-neutral-700)">Now</span><br><strong>Cosm · GPU 8K player</strong></div>
+    <div><span style="color:var(--color-neutral-700)">Before</span><br><strong>FOX · Live streaming</strong></div>
+    <div><span style="color:var(--color-neutral-700)">Open source</span><br><strong>socket-flow · Artemis</strong></div>
+    <div><span style="color:var(--color-neutral-700)">Base</span><br><strong>Londrina, BR · Remote US/EU</strong></div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  canvasRef = React.createRef();
+  componentDidMount() {
+    const c = this.canvasRef.current, ctx = c.getContext('2d');
+    let W = 0, H = 0, frame = 0;
+    const fit = () => { const r = c.getBoundingClientRect(); const dpr = Math.min(2, devicePixelRatio || 1); W = r.width; H = r.height; c.width = W * dpr; c.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
+    fit(); this._ro = new ResizeObserver(fit); this._ro.observe(c);
+    const BG = '#f3f2f2', DEEP = '#ae1800', DARK = '#4d170e';
+    const stages = [['DECODE  NVDEC', 3.6, 0.9], ['CROP + DEWARP  CUDA', 4.2, 1.2], ['ENCODE  NVENC', 4.0, 0.8], ['WEBRTC  SEND', 1.4, 0.5]];
+    const hist = new Array(60).fill(12);
+    const draw = now => {
+      const t = now / 1000; frame++;
+      ctx.clearRect(0, 0, W, H);
+      const pad = Math.min(40, W * 0.07);
+      // per-frame stage times (jittered), keep under budget with a rare spike
+      let total = 0; const seg = stages.map(([n, b, j], i) => { const v = Math.max(0.4, b + j * Math.sin(t * (5 + i * 2.3) + i) * 0.6 + (Math.sin(t * 13 + i * 7) > 0.995 ? 2.5 : 0)); total += v; return [n, v]; });
+      hist[frame % 60] = total;
+      // big readout
+      ctx.fillStyle = BG; ctx.textBaseline = 'alphabetic';
+      const big = Math.min(150, W * 0.28);
+      ctx.font = `800 ${big}px Archivo`; ctx.letterSpacing = '-0.04em';
+      const numTxt = total.toFixed(1); ctx.fillText(numTxt, pad - big * 0.05, pad + big * 0.78);
+      const numW = ctx.measureText(numTxt).width;
+      ctx.font = `800 ${big * 0.28}px Archivo`; ctx.letterSpacing = '0';
+      ctx.fillText('ms', pad + numW + big * 0.04, pad + big * 0.78);
+      ctx.font = '600 12px Archivo'; ctx.fillText(`FRAME ${String(frame).padStart(7, '0')}   BUDGET 16.7 ms   ${total < 16.7 ? 'ON TIME' : 'OVER'}`, pad, pad + big * 0.78 + 30);
+      // budget bar with stage segments
+      const by = pad + big * 0.78 + 60, bh = 22, bw = W - pad * 2;
+      ctx.fillStyle = DARK; ctx.fillRect(pad, by, bw, bh);
+      let x = pad;
+      seg.forEach(([n, v], i) => { const w = bw * v / 16.7; ctx.fillStyle = i % 2 ? '#ffc4b8' : BG; ctx.fillRect(x, by, w - 2, bh); ctx.fillStyle = BG; ctx.font = '600 10px Archivo'; if (w > 70) { ctx.fillStyle = DARK; ctx.fillText(n, x + 6, by + 15); } x += w; });
+      ctx.fillStyle = BG; ctx.font = '600 10px Archivo'; ctx.fillText('0', pad, by + bh + 16); ctx.textAlign = 'right'; ctx.fillText('16.7', pad + bw, by + bh + 16); ctx.textAlign = 'left';
+      // 60-slot frame ring: last second of frames as columns
+      const gy = by + bh + 40, gh = Math.max(60, H - gy - pad - 24), sw = bw / 60;
+      ctx.fillStyle = 'rgba(243,242,242,0.35)'; ctx.fillRect(pad, gy + gh - gh * 16.7 / 20, bw, 1);
+      for (let i = 0; i < 60; i++) { const v = hist[i]; const h = gh * Math.min(20, v) / 20; const cur = i === frame % 60; ctx.fillStyle = cur ? BG : v > 16.7 ? DEEP : 'rgba(243,242,242,0.7)'; ctx.fillRect(pad + i * sw, gy + gh - h, sw - 2, h); }
+      ctx.fillStyle = BG; ctx.font = '600 10px Archivo'; ctx.fillText('LAST 60 FRAMES · 1 s', pad, gy + gh + 16); ctx.textAlign = 'right'; ctx.fillText('16.7 ms LINE', pad + bw, gy + gh - gh * 16.7 / 20 - 6); ctx.textAlign = 'left';
+      this._raf = requestAnimationFrame(draw);
+    };
+    this._raf = requestAnimationFrame(draw);
+  }
+  componentWillUnmount() { cancelAnimationFrame(this._raf); this._ro && this._ro.disconnect(); }
+  renderVals() { return { canvasRef: this.canvasRef }; }
+}
+</script>
+</body>
+</html>

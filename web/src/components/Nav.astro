@@ -1,0 +1,15 @@
+---
+interface Props {
+  /** On the home page, section links are in-page (#work); elsewhere they point back to /#work. */
+  home?: boolean;
+}
+const { home = false } = Astro.props;
+const link = (h: string) => (home ? `#${h}` : `/#${h}`);
+---
+<nav class="nav" aria-label="Primary" style="position:sticky;top:0;z-index:10;background:var(--color-bg);padding-inline:clamp(20px,5vw,72px);border-bottom:2px solid var(--color-divider)">
+  {home && (
+    <span id="nav-progress" aria-hidden="true" style="position:absolute;left:0;bottom:-2px;height:2px;width:100%;background:var(--color-accent);transform-origin:left;transform:scaleX(0);pointer-events:none"></span>
+  )}
+  <a class="nav-brand" href="/" style="text-decoration:none;color:inherit">Felipe Ramos da Silva</a>
+  <a href={link('work')}>Work</a><a href={link('projects')}>Projects</a><a href={link('timeline')}>Timeline</a><a href={link('contact')}>Contact</a>
+</nav>

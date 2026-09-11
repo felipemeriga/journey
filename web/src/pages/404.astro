@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+---
+<Base title="Not found — Felipe Ramos da Silva" description="That page doesn't exist.">
+  <Nav />
+  <section style="max-width:1200px;margin:0 auto;padding:clamp(64px,10vw,140px) clamp(20px,5vw,72px)">
+    <div style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-3)">404</div>
+    <h1 style="font-size:clamp(48px,8vw,120px);line-height:0.95;letter-spacing:-0.03em;margin:0 0 var(--space-6) -0.03em">Nothing here.</h1>
+    <p style="font-size:17px;line-height:28px;color:var(--color-neutral-700);max-width:44ch;margin:0 0 var(--space-6)">That page doesn't exist — the link may be old or mistyped.</p>
+    <div style="display:flex;gap:var(--space-3);flex-wrap:wrap">
+      <a class="btn btn-primary" href="/" style="justify-content:flex-start;min-width:160px">← Home</a>
+      <a class="btn btn-secondary" href="/#work" style="justify-content:flex-start;min-width:160px">See the work</a>
+    </div>
+  </section>
+</Base>

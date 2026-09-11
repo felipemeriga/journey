@@ -1,0 +1,191 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Twenty Seconds Resume/CV
+% LaTeX Template
+% Version 1.0 (14/7/16)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Carmine Spagnuolo (cspagnuolo@unisa.it) with major modifications by
+% Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% The MIT License (see included LICENSE file)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[letterpaper]{twentysecondcv} % a4paper for A4
+
+%----------------------------------------------------------------------------------------
+%	 PERSONAL INFORMATION
+%----------------------------------------------------------------------------------------
+
+% If you don't need one or more of the below, just remove the content leaving the command, e.g. \cvnumberphone{}
+
+
+
+\cvname{Felipe Ramos da Silva} % Your name
+\cvjobtitle{Senior Rust \& Go Engineer \\ Real-Time Media \textbullet{} Distributed Systems \\ AI Applications \textbullet{} Web3} % Job title/career
+
+\cvlinkedin{https://linkedin.com/in/felipersil}
+\cvnumberphone{+55 19 99148-0101} % Phone number
+\cvsite{https://github.com/felipemeriga} % Personal website
+\cvmail{felipe.meriga@gmail.com} % Email address
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\makeprofile % Print the sidebar
+
+%----------------------------------------------------------------------------------------
+%	 SUMMARY
+%----------------------------------------------------------------------------------------
+\section{Summary}
+
+Senior software engineer with 7+ years in distributed systems, real-time media, and
+low-level backend development, primarily in \textbf{Rust} and \textbf{Go}. At Cosm, I built a
+GPU-accelerated web player that ingests 8K fisheye sports footage, corrects lens distortion,
+and delivers it to users in real time, with virtual-camera views that automatically track
+players or the ball. My background spans live-streaming infrastructure at FOX, Web3 / DeFi
+smart contracts, and applied AI. Alongside my full-time role, I build AI applications focused
+on agentic workflows, long-term memory, and RAG pipelines.
+
+%----------------------------------------------------------------------------------------
+%	 EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\section{Experience}
+
+\begin{twenty} % Environment for a list with descriptions
+
+\twentyitem
+    {\\
+    May 2025 - \\ Present}
+    {Senior Rust \& Go Engineer (Real-Time Media)}
+    {\href{https://kake.co/}{Kake @ Cosm}}
+    {}
+    {
+    \begin{itemize}
+    \item Built a GPU-accelerated web player in Rust for live sports production that ingests 8K fisheye video, corrects lens distortion, and delivers real-time playback.
+    \item Implemented virtual-camera views that automatically follow players or the ball across the field.
+    \item Designed backend services and media pipelines in Rust and Go for low-latency streaming, real-time processing, and distributed workloads.
+    \item Built cloud-native infrastructure on AWS with Docker and Kubernetes to support large-scale production systems.
+    \item \textbf{Core technologies: Rust, Go, C++, CUDA, Python, TypeScript, WebRTC, SRT, gRPC, AWS, Kubernetes.}
+    \end{itemize}
+    }
+
+\twentyitem
+    {\\
+    Mar 2021 - \\ May 2025}
+    {Senior Software Engineer (Live Streaming)}
+    {\href{https://x-team.com/}{X-Team @ FOX}}
+    {}
+    {
+    \begin{itemize}
+    \item Delivered backend infrastructure and real-time media systems for FOX's live-streaming platform -- infrastructure, content distribution, and custom monitoring for live-streaming workloads.
+    \item Built services in Go and Rust for real-time media processing, automation, and cloud infrastructure; implemented dynamic ad-insertion workflows for live broadcasts.
+    \item Cut CPU and memory usage by more than 60\% via profiling, heap analysis, tracing, and concurrency debugging; reduced the live-data validation loop from 6 minutes to 3 seconds.
+    \item \textbf{Core technologies: Go, Rust, TypeScript, React, AWS, Kubernetes, WebRTC, SRT.}
+    \end{itemize}
+    }
+
+\end{twenty}
+\pagebreak
+
+\makeprofilePart
+\enlargethispage{3\baselineskip}
+\section{Experience}
+\begin{twenty}
+
+\twentyitem
+    {\\
+    Nov 2025 - \\ Present}
+    {AI Solutions Engineer (Independent)}
+    {\href{https://roleminer.app/}{Freelance / Consulting}}
+    {}
+    {
+    \begin{itemize}
+    \item Design and build AI applications, developer tools, and backend services in Rust and Python.
+    \item Built \href{https://roleminer.app/}{RoleMiner}, a job-discovery platform with an LLM assistant, persistent user memory, structured job extraction, semantic search, and application tracking.
+    \item Built \href{https://github.com/felipemeriga/kioku}{Kioku}, an open-source memory layer for AI assistants with semantic retrieval, episodic memory, MCP integration, and long-term context.
+    \item Designed RAG and agent workflows covering retrieval, routing, context management, structured outputs, and evaluation.
+    \item \textbf{Core technologies: Rust, Python, FastAPI, PostgreSQL, pgvector, Qdrant, LLMs, RAG, MCP, LangGraph.}
+    \end{itemize}
+    }
+
+\twentyitem
+    {\\
+    Mar 2020 - \\ Mar 2021}
+    {Blockchain Software Engineer}
+    {\href{https://tokenizer.cc}{Tokenizer}}
+    {}
+    {
+    \begin{itemize}
+    \item Developed Ethereum smart contracts and backend integrations for DeFi and DEX products, using EVM tooling, RPC providers, and deployment workflows.
+    \item Identified and mitigated performance and security vulnerabilities in smart contracts.
+    \item \textbf{Core technologies: Solidity, Ethereum, EVM, Go, Rust, TypeScript, React, Docker, Kubernetes, AWS.}
+    \end{itemize}
+    }
+
+\twentyitem
+    {\\
+    Sep 2019 - \\ Mar 2021}
+    {Senior DevOps Engineer}
+    {\href{https://www.accenture.com/ie-en}{Accenture (The Dock)}}
+    {}
+    {
+    \begin{itemize}
+    \item Evaluated emerging technologies and designed cloud and deployment architectures for internal applications in Accenture's R\&D center.
+    \item \textbf{Core technologies: Go, Python, TypeScript, React, AWS, Terraform, Kubernetes, Docker.}
+    \end{itemize}
+    }
+
+\end{twenty}
+
+\section{Earlier Experience}
+\begin{twenty}
+
+\twentyitem
+    {2018 - 2019}
+    {Software Developer}
+    {\href{http://www.showerio.com}{IO-Shower (Smart Shower)}}
+    {}
+    {Led end-to-end technical development of an IoT smart-shower product -- embedded hardware, AWS IoT cloud architecture, backend APIs, and mobile apps. \textbf{C++, Java, React Native, AWS, IoT.}}
+
+\twentyitem
+    {2017 - 2019}
+    {Development Analyst / Consultant}
+    {\href{https://www.csgi.com/}{CSG International \& Tata Consultancy Services}}
+    {}
+    {Built and maintained enterprise software for telecom and wholesale operations across backend, databases, front-end, and CI/CD. \textbf{Java, Python, PL/SQL, Spring, Angular.}}
+
+\twentyitem
+    {2015 - 2017}
+    {Embedded / Automation Developer}
+    {\href{http://la2i.com}{Zoe Slots, LA2I \& Jirehmaq}}
+    {}
+    {Built embedded systems for online gaming, energy-efficiency software, and industrial-automation control using microcontrollers. \textbf{C++, Qt, Python, Arduino, Raspberry Pi.}}
+
+\end{twenty}
+
+%----------------------------------------------------------------------------------------
+%	 EDUCATION
+%----------------------------------------------------------------------------------------
+\section{Education}
+
+\begin{twenty} % Environment for a list with descriptions
+	\twentyitem
+    	{2011 - 2016}
+        {BEng., Electrical Engineering}
+        {\href{http://www.uel.br}{State University of Londrina (UEL)}}
+        {Londrina, Paraná, Brazil}
+        {Specialization: Embedded Software Development}
+\end{twenty}
+
+\end{document}

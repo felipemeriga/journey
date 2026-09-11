@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-67b5d5e6-76ab-400a-a2b1-6c7c7d6e56c1/styles.css">
+<script src="_ds/modernist-67b5d5e6-76ab-400a-a2b1-6c7c7d6e56c1/_ds_bundle.js"></script>
+<style>body{margin:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);text-wrap:pretty}a{color:var(--color-accent)}a:hover{color:var(--color-accent-600)}</style>
+</helmet>
+<div style="position:relative;min-height:100vh;display:flex;flex-direction:column;overflow:hidden">
+  <canvas ref="{{ canvasRef }}" style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas>
+  <nav class="nav" style="position:relative;z-index:2;padding-inline:clamp(20px,5vw,72px);background:var(--color-bg)">
+    <span class="nav-brand">Felipe Ramos da Silva</span>
+    <a href="#work">Work</a><a href="#projects">Projects</a><a href="#timeline">Timeline</a><a href="#contact">Contact</a>
+  </nav>
+  <div style="position:relative;z-index:2;flex:1;display:grid;grid-template-columns:minmax(0,1fr);align-content:end;padding:clamp(48px,8vw,120px) clamp(20px,5vw,72px) 0;pointer-events:none">
+    <div style="max-width:1200px;width:100%;margin:0 auto">
+      <div style="display:inline-flex;gap:var(--space-2);align-items:center;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);background:var(--color-bg);padding:4px 8px 4px 0"><span style="width:10px;height:10px;background:var(--color-accent);display:inline-block"></span>Senior Rust &amp; Go Engineer</div>
+      <h1 style="font-size:clamp(46px,7.4vw,108px);line-height:1.04;letter-spacing:-0.025em;margin:var(--space-3) 0 0 -0.058em;max-width:14ch"><span style="background:var(--color-bg);box-decoration-break:clone;-webkit-box-decoration-break:clone;padding:0 0.08em 0 0.04em">Systems that hold the frame.</span></h1>
+      <p style="font-size:17px;line-height:28px;max-width:58ch;margin:var(--space-6) 0 0;background:var(--color-bg);width:fit-content;padding-right:var(--space-3)">Seven years of real-time media, distributed systems and low-level backends in Rust and Go — 8K video decoded on GPUs under a 16.7 ms budget, live-streaming infrastructure for FOX, and a blockchain and WebSocket protocol written from the bytes up.</p>
+      <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-6);pointer-events:auto">
+        <a class="btn btn-primary" href="#work" style="justify-content:flex-start;min-width:180px">See the work →</a>
+        <a class="btn btn-secondary" href="#" style="justify-content:flex-start;min-width:180px;background:var(--color-bg)">Résumé (PDF)</a>
+      </div>
+    </div>
+  </div>
+  <div style="position:relative;z-index:2;margin-top:clamp(40px,6vw,88px);border-top:2px solid var(--color-divider);background:var(--color-bg);padding:var(--space-3) clamp(20px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:var(--space-4);font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-feature-settings:'tnum' 1">
+    <div><span style="color:var(--color-neutral-700)">Source</span><br><strong>8K fisheye · 9×7 tiles</strong></div>
+    <div><span style="color:var(--color-neutral-700)">Decode</span><br><strong>NVDEC ×2 · PTS-correlated</strong></div>
+    <div><span style="color:var(--color-neutral-700)">Budget</span><br><strong>16.7 ms · 60 fps</strong></div>
+    <div><span style="color:var(--color-neutral-700)">Output</span><br><strong>Virtual cam · WebRTC</strong></div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  canvasRef = React.createRef();
+  componentDidMount() {
+    const c = this.canvasRef.current, ctx = c.getContext('2d');
+    let W = 0, H = 0, dpr = 1, frame = 0, cx = 0.5, cy = 0.5, lastPuck = null;
+    const fit = () => { const r = c.getBoundingClientRect(); dpr = Math.min(2, devicePixelRatio || 1); W = r.width; H = r.height; c.width = W * dpr; c.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); };
+    fit(); this._ro = new ResizeObserver(fit); this._ro.observe(c);
+    const COLS = 9, ROWS = 7, INK = '#201e1d', RED = '#ec3013', TINT = '#ffe0d9';
+    const puck = t => {
+      // slow drift with periodic fast dashes across the rink
+      const dash = Math.pow(Math.sin(t * 0.35), 9);
+      return [0.5 + 0.36 * Math.sin(t * 0.22) + 0.12 * dash * Math.cos(t * 3.1), 0.5 + 0.3 * Math.sin(t * 0.41 + 1.3) * Math.cos(t * 0.17)];
+    };
+    const draw = now => {
+      const t = now / 1000; frame++;
+      ctx.clearRect(0, 0, W, H);
+      const tw = W / COLS, th = H / ROWS;
+      const [px, py] = puck(t);
+      const k = 0.07; cx += (px - cx) * k; cy += (py - cy) * k;
+      const cw = Math.max(200, W * 0.26), ch = cw * 9 / 16;
+      const rx = cx * W - cw / 2, ry = cy * H - ch / 2;
+      // tiles
+      ctx.lineWidth = 1;
+      for (let i = 0; i < COLS; i++) for (let j = 0; j < ROWS; j++) {
+        const x = i * tw, y = j * th;
+        const hit = x < rx + cw && x + tw > rx && y < ry + ch && y + th > ry;
+        if (hit) { ctx.fillStyle = TINT; ctx.fillRect(x, y, tw, th); }
+        ctx.strokeStyle = 'rgba(32,30,29,0.18)'; ctx.strokeRect(x + 0.5, y + 0.5, tw, th);
+        ctx.fillStyle = hit ? '#ae1800' : 'rgba(32,30,29,0.35)'; ctx.font = '600 10px Archivo'; ctx.fillText(`${i}.${j}`, x + 6, y + 14);
+      }
+      // NVDEC split
+      ctx.setLineDash([6, 6]); ctx.strokeStyle = INK; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(W / 2, 0); ctx.lineTo(W / 2, H); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = INK; ctx.font = '800 12px Archivo';
+      ctx.fillText('NVDEC 0 · LEFT', 12, H - 14); ctx.textAlign = 'right'; ctx.fillText('NVDEC 1 · RIGHT', W - 12, H - 14); ctx.textAlign = 'left';
+      // crop
+      ctx.strokeStyle = RED; ctx.lineWidth = 2; ctx.strokeRect(rx, ry, cw, ch);
+      const L = 14; ctx.lineWidth = 4; ctx.beginPath();
+      [[rx, ry, 1, 1], [rx + cw, ry, -1, 1], [rx, ry + ch, 1, -1], [rx + cw, ry + ch, -1, -1]].forEach(([x, y, sx, sy]) => { ctx.moveTo(x, y + sy * L); ctx.lineTo(x, y); ctx.lineTo(x + sx * L, y); });
+      ctx.stroke();
+      ctx.fillStyle = RED; ctx.fillRect(rx, ry - 22, 178, 22); ctx.fillStyle = '#f3f2f2'; ctx.font = '800 11px Archivo'; ctx.fillText('VIRTUAL CAM  1920×1080  60 FPS', rx + 8, ry - 7);
+      // puck + trail
+      ctx.fillStyle = RED; ctx.fillRect(px * W - 5, py * H - 5, 10, 10);
+      if (lastPuck) { ctx.strokeStyle = 'rgba(236,48,19,0.5)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(lastPuck[0] * W, lastPuck[1] * H); ctx.lineTo(px * W, py * H); ctx.stroke(); }
+      lastPuck = [px, py];
+      // readout
+      const ms = 11.2 + 2.6 * Math.sin(t * 7.3) + 1.1 * Math.sin(t * 19);
+      ctx.fillStyle = INK; ctx.font = '600 11px Archivo';
+      ctx.fillText(`FRAME ${String(frame % 100000).padStart(6, '0')}   PTS ${(t * 90000 | 0)}   ${ms.toFixed(1)} / 16.7 ms`, 12, 18);
+      ctx.fillStyle = 'rgba(32,30,29,0.15)'; ctx.fillRect(12, 24, 200, 3); ctx.fillStyle = RED; ctx.fillRect(12, 24, 200 * ms / 16.7, 3);
+      this._raf = requestAnimationFrame(draw);
+    };
+    this._raf = requestAnimationFrame(draw);
+  }
+  componentWillUnmount() { cancelAnimationFrame(this._raf); this._ro && this._ro.disconnect(); }
+  renderVals() { return { canvasRef: this.canvasRef }; }
+}
+</script>
+</body>
+</html>

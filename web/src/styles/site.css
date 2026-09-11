@@ -1,0 +1,40 @@
+/* Page-level styles layered on top of the Modernist design system (styles.css).
+   The design tokens (--color-*, --space-*, --font-*) come from /styles.css. */
+
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); text-wrap: pretty; }
+a { color: var(--color-accent); }
+a:hover { color: var(--color-accent-600); }
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+/* scroll-reveal (driven by the IntersectionObserver in portfolio.js) */
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes rule { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+[data-reveal] { opacity: 0; }
+[data-reveal].in { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
+[data-reveal-rule] { transform-origin: left; transform: scaleX(0); }
+[data-reveal-rule].in { animation: rule .9s cubic-bezier(.2,.7,.2,1) both; }
+
+/* hover tints ported from the handoff's style-hover attributes */
+.content-link:hover { color: var(--color-accent) !important; }
+.contact-link:hover { color: var(--color-accent-200) !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal], [data-reveal-rule] { opacity: 1; transform: none; animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ── blog prose (Modernist idiom: flat, 2px rules, accent links) ── */
+.prose { font-size: 17px; line-height: 1.7; max-width: 68ch; }
+.prose > * + * { margin-top: var(--space-4); }
+.prose h2 { font-size: clamp(26px,3vw,36px); line-height: 1.1; letter-spacing: -0.02em; margin-top: var(--space-8); }
+.prose h3 { font-size: clamp(20px,2.2vw,26px); line-height: 1.15; margin-top: var(--space-6); }
+.prose p { margin: 0; }
+.prose a { text-underline-offset: 3px; }
+.prose ul, .prose ol { margin: 0; padding-left: 1.25em; display: flex; flex-direction: column; gap: var(--space-2); }
+.prose img { border: 2px solid var(--color-divider); width: 100%; }
+.prose blockquote { margin: 0; padding: var(--space-2) 0 var(--space-2) var(--space-4); border-left: 2px solid var(--color-accent); color: var(--color-neutral-700); }
+.prose hr { border: 0; height: 2px; background: var(--color-divider); margin: var(--space-8) 0; }
+.prose code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; background: var(--color-surface); padding: 2px 6px; }
+.prose pre { background: var(--color-neutral-900); color: var(--color-bg); padding: var(--space-4); overflow-x: auto; font-size: 14px; line-height: 1.5; }
+.prose pre code { background: none; padding: 0; color: inherit; }

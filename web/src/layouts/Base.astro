@@ -1,0 +1,50 @@
+---
+import '../styles/site.css';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Absolute or root-relative OG image path. */
+  image?: string;
+  /** OpenGraph type: 'website' | 'article' */
+  type?: string;
+  /** Optional JSON-LD object(s) to inject. */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { title, description, image = '/assets/portrait.jpg', type = 'website', jsonLd } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site);
+const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="author" content="Felipe Ramos da Silva" />
+  <link rel="canonical" href={canonical} />
+  <meta name="theme-color" content="#f3f2f2" />
+
+  <meta property="og:type" content={type} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <link rel="stylesheet" href="/styles.css" />
+
+  {schemas.map((s) => (
+    <script type="application/ld+json" set:html={JSON.stringify(s)} />
+  ))}
+</head>
+<body>
+  <slot />
+</body>
+</html>

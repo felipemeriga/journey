@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/modernist-67b5d5e6-76ab-400a-a2b1-6c7c7d6e56c1/styles.css">
+<script src="_ds/modernist-67b5d5e6-76ab-400a-a2b1-6c7c7d6e56c1/_ds_bundle.js"></script>
+<style>html{scroll-behavior:smooth}body{margin:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);text-wrap:pretty}a{color:var(--color-accent)}a:hover{color:var(--color-accent-600)}:focus-visible{outline:2px solid var(--color-accent);outline-offset:2px}@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}@keyframes rule{from{transform:scaleX(0)}to{transform:scaleX(1)}}[data-reveal]{opacity:0}[data-reveal].in{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}[data-reveal-rule]{transform-origin:left;transform:scaleX(0)}[data-reveal-rule].in{animation:rule .9s cubic-bezier(.2,.7,.2,1) both}@media (prefers-reduced-motion:reduce){[data-reveal],[data-reveal-rule]{opacity:1;transform:none;animation:none}}</style>
+</helmet>
+<div style="display:flex;flex-direction:column">
+
+  <nav class="nav" data-screen-label="Nav" style="position:sticky;top:0;z-index:10;background:var(--color-bg);padding-inline:clamp(20px,5vw,72px);border-bottom:2px solid var(--color-divider)">
+    <span ref="{{ progressRef }}" style="position:absolute;left:0;bottom:-2px;height:2px;width:100%;background:var(--color-accent);transform-origin:left;transform:scaleX(0);pointer-events:none"></span>
+    <span class="nav-brand">Felipe Ramos da Silva</span>
+    <a href="#work">Work</a><a href="#projects">Projects</a><a href="#timeline">Timeline</a><a href="#contact">Contact</a>
+  </nav>
+
+  <section id="top" data-screen-label="Hero" style="min-height:calc(100vh - 56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr))">
+    <div style="padding:clamp(40px,7vw,104px) clamp(20px,5vw,72px);display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-8)">
+      <div>
+        <div style="display:flex;gap:var(--space-2);align-items:center;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700)"><span style="width:10px;height:10px;background:var(--color-accent);display:inline-block"></span>Senior Rust &amp; Go Engineer · Real-time media · Distributed systems</div>
+        <h1 style="font-size:clamp(48px,6.4vw,112px);line-height:0.98;letter-spacing:-0.03em;margin:var(--space-4) 0 0 -0.058em"><span data-reveal style="display:block;animation-delay:.05s">Systems that</span><span data-reveal style="display:block;animation-delay:.18s">answer in</span><span data-reveal style="display:block;color:var(--color-accent);animation-delay:.31s">milliseconds.</span></h1>
+      </div>
+      <div>
+        <p data-reveal style="font-size:17px;line-height:28px;max-width:52ch;margin:0;animation-delay:.45s">I'm Felipe, a senior software engineer working in Rust and Go. I build backends that can't be late: distributed systems, real-time media, and the infrastructure underneath them.</p>
+        <div data-reveal style="display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-6);animation-delay:.55s">
+          <a class="btn btn-primary" href="#work" style="justify-content:flex-start;min-width:180px">See the work →</a>
+          <a class="btn btn-secondary" href="assets/Felipe-Ramos-da-Silva-Resume.pdf" download="Felipe-Ramos-da-Silva-Resume.pdf" style="justify-content:flex-start;min-width:180px">Résumé (PDF)</a>
+        </div>
+      </div>
+    </div>
+    <div style="position:relative;background:var(--color-accent);min-height:460px;overflow:hidden">
+      <canvas ref="{{ heroRef }}" style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas>
+    </div>
+  </section>
+
+  <div style="border-top:2px solid var(--color-divider);padding:var(--space-3) clamp(20px,5vw,72px);display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:var(--space-4);font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-feature-settings:'tnum' 1">
+    <div><span style="color:var(--color-neutral-700)">Core</span><br><strong>Rust · Go · Distributed systems</strong></div>
+    <div><span style="color:var(--color-neutral-700)">Specialty</span><br><strong>Real-time media · GPU video</strong></div>
+    <div><span style="color:var(--color-neutral-700)">Also</span><br><strong>Cloud · Frontend · Web3 · AI agents</strong></div>
+    <div><span style="color:var(--color-neutral-700)">Base</span><br><strong>Londrina, BR · Remote US / EU</strong></div>
+  </div>
+
+  <section id="work" data-screen-label="Work" style="border-top:2px solid var(--color-divider);padding:clamp(48px,6vw,88px) clamp(20px,5vw,72px)">
+    <div style="max-width:1200px;margin:0 auto">
+      <div data-reveal style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-3)">01 — Professional highlights</div>
+      <h2 data-reveal style="animation-delay:.1s;font-size:clamp(32px,4vw,56px);line-height:1.04;letter-spacing:-0.02em;margin:0 0 var(--space-8) -0.045em;max-width:22ch">Two roles where latency, concurrency and correctness were the whole job.</h2>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:0 clamp(16px,3vw,48px);border-top:2px solid var(--color-divider)">
+        <article data-reveal style="padding:var(--space-8) 0;border-bottom:2px solid var(--color-divider);display:flex;flex-direction:column;gap:var(--space-4);min-width:0">
+          <div style="display:flex;justify-content:space-between;gap:var(--space-3);font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-feature-settings:'tnum' 1"><span style="color:var(--color-accent-700)">Cosm · via Kake</span><span style="color:var(--color-neutral-700)">May 2025 — present</span></div>
+          <h3 style="font-size:clamp(24px,2.4vw,32px);line-height:1.1;margin:0">GPU-accelerated 8K virtual camera at 60 fps</h3>
+          <div style="position:relative;height:220px;border:2px solid var(--color-divider);background:var(--color-surface)"><canvas ref="{{ cosmRef }}" style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas></div>
+          <p style="font-size:15px;line-height:24px;margin:0">A Rust web player for live sports that decodes 8K fisheye footage on NVIDIA T4s, crops a virtual camera, dewarps it in CUDA and ships it over WebRTC — every frame in under 16.7 ms.</p>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:var(--space-2);font-size:15px;line-height:24px">
+            <li style="display:grid;grid-template-columns:10px 1fr;gap:var(--space-3);align-items:start"><span style="width:10px;height:10px;background:var(--color-accent);margin-top:7px"></span><span>Split the 8K decode across <strong>both NVDEC engines</strong>, correlating regions by PTS — stable 60 fps with no dropped frames while a puck crosses the rink.</span></li>
+            <li style="display:grid;grid-template-columns:10px 1fr;gap:var(--space-3);align-items:start"><span style="width:10px;height:10px;background:var(--color-accent);margin-top:7px"></span><span>Built an <strong>auto-tally director</strong>: XYZ tracking → PTZ → predictive, keyframe-scheduled cuts between physical cameras without losing a single output frame.</span></li>
+          </ul>
+          <div style="display:flex;flex-wrap:wrap;gap:var(--space-1)"><span class="tag tag-neutral">Rust</span><span class="tag tag-neutral">Go</span><span class="tag tag-neutral">C++</span><span class="tag tag-neutral">CUDA</span><span class="tag tag-neutral">NVDEC / NVENC</span><span class="tag tag-neutral">HEVC</span><span class="tag tag-neutral">WebRTC</span><span class="tag tag-neutral">AWS</span></div>
+        </article>
+        <article data-reveal style="padding:var(--space-8) 0;border-bottom:2px solid var(--color-divider);display:flex;flex-direction:column;gap:var(--space-4);min-width:0">
+          <div style="display:flex;justify-content:space-between;gap:var(--space-3);font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-feature-settings:'tnum' 1"><span style="color:var(--color-accent-700)">FOX · via X-Team</span><span style="color:var(--color-neutral-700)">Mar 2021 — May 2025</span></div>
+          <h3 style="font-size:clamp(24px,2.4vw,32px);line-height:1.1;margin:0">Live-streaming backend, from 6 minutes to 3 seconds</h3>
+          <div style="position:relative;height:220px;border:2px solid var(--color-divider);background:var(--color-surface)"><canvas ref="{{ foxRef }}" style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas></div>
+          <p style="font-size:15px;line-height:24px;margin:0">Infrastructure and operational visibility for FOX's live channels across the US: encoding health, manifests, dynamic ad insertion and viewer telemetry, correlated per channel in a continuous Go validation loop.</p>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:var(--space-2);font-size:15px;line-height:24px">
+            <li style="display:grid;grid-template-columns:10px 1fr;gap:var(--space-3);align-items:start"><span style="width:10px;height:10px;background:var(--color-accent);margin-top:7px"></span><span>Profiled with pprof, heap analysis, tracing and flame graphs; cut the full validation loop from <strong>~6 min to ~2–3 s</strong> and CPU/memory by 60%+.</span></li>
+            <li style="display:grid;grid-template-columns:10px 1fr;gap:var(--space-3);align-items:start"><span style="width:10px;height:10px;background:var(--color-accent);margin-top:7px"></span><span>Normalized heterogeneous provider data and validated <strong>dynamic ad insertion</strong> across streaming, encoding and advertising systems.</span></li>
+          </ul>
+          <div style="display:flex;flex-wrap:wrap;gap:var(--space-1)"><span class="tag tag-neutral">Go</span><span class="tag tag-neutral">Rust</span><span class="tag tag-neutral">TypeScript</span><span class="tag tag-neutral">Kubernetes</span><span class="tag tag-neutral">AWS</span><span class="tag tag-neutral">HLS / DASH</span><span class="tag tag-neutral">SRT</span><span class="tag tag-neutral">pprof</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" data-screen-label="Projects" style="border-top:2px solid var(--color-divider);padding:clamp(48px,6vw,88px) clamp(20px,5vw,72px)">
+    <div style="max-width:1200px;margin:0 auto">
+      <div data-reveal style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-3)">02 — Featured projects</div>
+      <h2 data-reveal style="animation-delay:.1s;font-size:clamp(32px,4vw,56px);line-height:1.04;letter-spacing:-0.02em;margin:0 0 var(--space-8) -0.045em;max-width:22ch">From the bytes up: protocols, consensus, and agents that remember.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px;background:var(--color-divider);border:2px solid var(--color-divider)">
+        <sc-for list="{{ projects }}" as="p" hint-placeholder-count="4">
+          <article data-reveal style="background:var(--color-bg);padding:var(--space-4);display:flex;flex-direction:column;gap:var(--space-3);min-width:0">
+            <div style="display:flex;justify-content:space-between;gap:var(--space-2);font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-feature-settings:'tnum' 1"><span style="color:var(--color-accent-700)">{{ p.kicker }}</span><span style="color:var(--color-neutral-700);white-space:nowrap">{{ p.meta }}</span></div>
+            <div style="position:relative;height:150px;background:var(--color-surface)"><canvas ref="{{ p.ref }}" style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas></div>
+            <h3 style="font-size:22px;line-height:1.15;margin:0">{{ p.title }}</h3>
+            <p style="font-size:14px;line-height:22px;margin:0;flex:1">{{ p.body }}</p>
+            <div style="font-size:12px;color:var(--color-neutral-700);font-feature-settings:'tnum' 1">{{ p.stack }}</div>
+            <a class="btn btn-secondary" href="{{ p.href }}" target="_blank" rel="noreferrer" style="justify-content:flex-start;align-self:stretch">{{ p.cta }}</a>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="timeline" data-screen-label="Timeline" style="border-top:2px solid var(--color-divider);padding:clamp(48px,6vw,88px) clamp(20px,5vw,72px)">
+    <div style="max-width:1200px;margin:0 auto">
+      <div data-reveal style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-3)">03 — Career timeline</div>
+      <h2 data-reveal style="animation-delay:.1s;font-size:clamp(32px,4vw,56px);line-height:1.04;letter-spacing:-0.02em;margin:0 0 var(--space-6) -0.045em;max-width:22ch">2015 → now. Industrial automation to GPU video.</h2>
+      <div style="position:relative;height:72px;border-top:2px solid var(--color-divider);border-bottom:2px solid var(--color-divider);margin-bottom:var(--space-6)"><canvas ref="{{ tlRef }}" style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas></div>
+      <div style="display:flex;flex-direction:column">
+        <sc-for list="{{ roles }}" as="r" hint-placeholder-count="6">
+          <div data-reveal style="display:grid;grid-template-columns:minmax(120px,160px) minmax(0,1.2fr) minmax(0,1fr);gap:var(--space-4);padding:var(--space-3) 0;border-bottom:1px solid var(--color-divider);font-size:15px;line-height:24px;align-items:baseline">
+            <div style="font-feature-settings:'tnum' 1;color:var(--color-neutral-700);font-size:13px;letter-spacing:0.04em">{{ r.period }}</div>
+            <div><strong>{{ r.role }}</strong><span style="color:var(--color-neutral-700)"> — {{ r.company }}</span></div>
+            <div style="font-size:13px;color:var(--color-neutral-700)">{{ r.stack }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="opensource" data-screen-label="Open source" style="border-top:2px solid var(--color-divider);padding:clamp(48px,6vw,88px) clamp(20px,5vw,72px)">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(24px,4vw,64px)">
+      <div>
+        <div data-reveal style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-3)">04 — Open source</div>
+        <h2 data-reveal style="animation-delay:.1s;font-size:clamp(32px,4vw,56px);line-height:1.04;letter-spacing:-0.02em;margin:0 0 var(--space-4) -0.045em">Built in public.</h2>
+        <p style="font-size:15px;line-height:24px;max-width:44ch;margin:0 0 var(--space-4)">Rust systems programming, blockchain, microservice references, embedded and applied AI tooling — all on GitHub.</p>
+        <a class="btn btn-secondary" href="https://github.com/felipemeriga" target="_blank" rel="noreferrer" style="justify-content:flex-start;min-width:200px">github.com/felipemeriga →</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:var(--space-4);align-content:start">
+        <div data-reveal style="border-top:2px solid var(--color-divider);padding-top:var(--space-3)"><div style="font-family:var(--font-heading);font-weight:800;font-size:clamp(40px,4vw,56px);line-height:1;color:var(--color-accent);letter-spacing:-0.03em;font-feature-settings:'tnum' 1">{{ statRepos }}</div><div style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin-top:var(--space-2)">Public repos</div></div>
+        <div data-reveal style="border-top:2px solid var(--color-divider);padding-top:var(--space-3)"><div style="font-family:var(--font-heading);font-weight:800;font-size:clamp(40px,4vw,56px);line-height:1;color:var(--color-accent);letter-spacing:-0.03em;font-feature-settings:'tnum' 1">{{ statFollowers }}</div><div style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin-top:var(--space-2)">Followers</div></div>
+        <div data-reveal style="border-top:2px solid var(--color-divider);padding-top:var(--space-3)"><div style="font-family:var(--font-heading);font-weight:800;font-size:clamp(40px,4vw,56px);line-height:1;color:var(--color-accent);letter-spacing:-0.03em;font-feature-settings:'tnum' 1">{{ statStars }}</div><div style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin-top:var(--space-2)">Stars · socket-flow</div></div>
+        <div data-reveal style="border-top:2px solid var(--color-divider);padding-top:var(--space-3)"><div style="font-family:var(--font-heading);font-weight:800;font-size:clamp(40px,4vw,56px);line-height:1;color:var(--color-accent);letter-spacing:-0.03em">crates.io</div><div style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin-top:var(--space-2)">Published · socket-flow</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="content" data-screen-label="Content" style="border-top:2px solid var(--color-divider);padding:clamp(48px,6vw,88px) clamp(20px,5vw,72px)">
+    <div style="max-width:1200px;margin:0 auto">
+      <div data-reveal style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700);margin-bottom:var(--space-3)">05 — Content &amp; community</div>
+      <h2 data-reveal style="animation-delay:.1s;font-size:clamp(32px,4vw,56px);line-height:1.04;letter-spacing:-0.02em;margin:0 0 var(--space-6) -0.045em;max-width:22ch">What I've learned, out loud.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:0 var(--space-4);border-top:2px solid var(--color-divider)">
+        <a data-reveal href="https://www.youtube.com/@felipemerigadon" target="_blank" rel="noreferrer" style="color:inherit;text-decoration:none;padding:var(--space-4) 0;border-bottom:1px solid var(--color-divider);display:flex;flex-direction:column;gap:var(--space-2)" style-hover="color:var(--color-accent)"><span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700)">YouTube · EN</span><strong style="font-size:20px;line-height:1.2">@felipemerigadon</strong><span style="font-size:14px;line-height:22px">Technical software development — engineering topics, tooling and hands-on programming.</span></a>
+        <a data-reveal href="https://www.youtube.com/@felipemerigadon" target="_blank" rel="noreferrer" style="color:inherit;text-decoration:none;padding:var(--space-4) 0;border-bottom:1px solid var(--color-divider);display:flex;flex-direction:column;gap:var(--space-2)" style-hover="color:var(--color-accent)"><span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700)">YouTube · PT</span><strong style="font-size:20px;line-height:1.2">Careers abroad</strong><span style="font-size:14px;line-height:22px">Helping Brazilian engineers find jobs outside Brazil, build personal branding, and stay healthy at work.</span></a>
+        <a data-reveal href="https://felipemeriga.hashnode.dev/" target="_blank" rel="noreferrer" style="color:inherit;text-decoration:none;padding:var(--space-4) 0;border-bottom:1px solid var(--color-divider);display:flex;flex-direction:column;gap:var(--space-2)" style-hover="color:var(--color-accent)"><span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700)">Blog</span><strong style="font-size:20px;line-height:1.2">Writing on Hashnode</strong><span style="font-size:14px;line-height:22px">Long-form posts on Rust, Go, real-time systems and AI tooling — felipemeriga.hashnode.dev</span></a>
+        <a data-reveal href="https://www.instagram.com/f.meriga/" target="_blank" rel="noreferrer" style="color:inherit;text-decoration:none;padding:var(--space-4) 0;border-bottom:1px solid var(--color-divider);display:flex;flex-direction:column;gap:var(--space-2)" style-hover="color:var(--color-accent)"><span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700)">Instagram</span><strong style="font-size:20px;line-height:1.2">@f.meriga</strong><span style="font-size:14px;line-height:22px">Behind the scenes of the work and life as a remote engineer.</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" data-screen-label="Education" style="border-top:2px solid var(--color-divider);padding:clamp(40px,5vw,64px) clamp(20px,5vw,72px)">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(120px,160px) minmax(0,1fr);gap:var(--space-4);align-items:baseline">
+      <div style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-accent-700)">06 — Education</div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-3);font-size:15px;line-height:24px">
+        <div><strong>BEng, Electrical Engineering</strong> — State University of Londrina (UEL) · 2011–2016<br><span style="color:var(--color-neutral-700)">Specialization: Embedded Software Development</span></div>
+        <div><strong>Technical Course, Chemistry</strong> — Escola Técnica Estadual Conselheiro Antônio Prado · 2007–2009</div>
+        <div style="color:var(--color-neutral-700)">Languages: English, Portuguese and Spanish (native / bilingual) · Italian (professional) · Japanese (elementary)</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" data-screen-label="Contact" style="background:var(--color-accent);color:var(--color-bg);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr))">
+    <div style="padding:clamp(48px,7vw,104px) clamp(20px,5vw,72px);display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-8)">
+      <div>
+        <div style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:var(--space-3)">07 — Hire me</div>
+        <h2 data-reveal style="font-size:clamp(40px,5.6vw,88px);line-height:0.98;letter-spacing:-0.03em;margin:0 0 0 -0.058em;color:var(--color-bg);max-width:14ch">Need a backend that holds under load?</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+        <p style="font-size:17px;line-height:28px;max-width:46ch;margin:0">Open to senior Rust / Go roles in distributed systems, backend infrastructure and real-time media — remote, working with teams across the US and Europe.</p>
+        <div style="display:flex;flex-direction:column;font-family:var(--font-heading);font-weight:800;font-size:clamp(20px,2.2vw,28px);line-height:1.3">
+          <a href="mailto:felipe.meriga@gmail.com" style="color:var(--color-bg);text-decoration:none;border-top:2px solid var(--color-bg);padding:var(--space-2) 0" style-hover="color:var(--color-accent-200)">felipe.meriga@gmail.com</a>
+          <a href="https://linkedin.com/in/felipersil" target="_blank" rel="noreferrer" style="color:var(--color-bg);text-decoration:none;border-top:2px solid var(--color-bg);padding:var(--space-2) 0" style-hover="color:var(--color-accent-200)">linkedin.com/in/felipersil</a>
+          <a href="https://github.com/felipemeriga" target="_blank" rel="noreferrer" style="color:var(--color-bg);text-decoration:none;border-top:2px solid var(--color-bg);padding:var(--space-2) 0" style-hover="color:var(--color-accent-200)">github.com/felipemeriga</a>
+          <a href="assets/Felipe-Ramos-da-Silva-Resume.pdf" download="Felipe-Ramos-da-Silva-Resume.pdf" style="color:var(--color-bg);text-decoration:none;border-top:2px solid var(--color-bg);border-bottom:2px solid var(--color-bg);padding:var(--space-2) 0" style-hover="color:var(--color-accent-200)">Download résumé (PDF) ↓</a>
+        </div>
+      </div>
+    </div>
+    <div class="grayscale" style="min-height:420px;overflow:hidden"><img src="assets/portrait.jpg" alt="Felipe Ramos da Silva" style="width:100%;height:100%;object-fit:cover;object-position:50% 25%"></div>
+  </section>
+
+  <footer style="padding:var(--space-4) clamp(20px,5vw,72px);display:flex;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap;font-size:13px;letter-spacing:0.04em;color:var(--color-neutral-700);font-feature-settings:'tnum' 1">
+    <span>Felipe Ramos da Silva · Londrina, Paraná, Brazil</span><span>Rust · Go · Distributed systems · Real-time media · Applied AI</span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;cinematic&quot;,&quot;calm&quot;,&quot;off&quot;],&quot;default&quot;:&quot;cinematic&quot;,&quot;tsType&quot;:&quot;'cinematic' | 'calm' | 'off'&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;denseTimeline&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Content&quot;}}">
+class Component extends DCLogic {
+  heroRef = React.createRef(); progressRef = React.createRef(); cosmRef = React.createRef(); foxRef = React.createRef(); tlRef = React.createRef();
+  pRefs = [React.createRef(), React.createRef(), React.createRef(), React.createRef()];
+  state = { repos: 0, followers: 0, stars: 0 };
+
+  componentDidMount() {
+    const INK = '#201e1d', RED = '#ec3013', BG = '#f3f2f2', TINT = '#ffe0d9', DEEP = '#ae1800', DARK = '#4d170e', MUTE = 'rgba(32,30,29,0.35)';
+    const canvases = [];
+    const trunc = (ctx, txt, maxW) => { if (ctx.measureText(txt).width <= maxW) return txt; while (txt.length > 1 && ctx.measureText(txt + '…').width > maxW) txt = txt.slice(0, -1); return txt + '…'; };
+    const label = (ctx, txt, x, y, maxW) => ctx.fillText(trunc(ctx, txt, maxW), x, y);
+    const reg = (ref, fn) => { const c = ref.current; if (!c) return; const ctx = c.getContext('2d'); const o = { c, ctx, fn, W: 0, H: 0, state: {} }; const fit = () => { const r = c.getBoundingClientRect(); const dpr = Math.min(2, devicePixelRatio || 1); o.W = r.width; o.H = r.height; c.width = o.W * dpr; c.height = o.H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }; fit(); this._ro.observe(c); o.fit = fit; canvases.push(o); };
+    this._ro = new ResizeObserver(entries => entries.forEach(e => { const o = canvases.find(x => x.c === e.target); o && o.fit(); }));
+
+    // — hero: the frame budget —
+    const stages = [['DECODE', 3.6, 0.9], ['PROCESS', 4.2, 1.2], ['ENCODE', 4.0, 0.8], ['DELIVER', 1.4, 0.5]];
+    const hist = new Array(60).fill(12);
+    reg(this.heroRef, (ctx, W, H, t, frame) => {
+      const pad = Math.min(40, W * 0.07);
+      let total = 0; const seg = stages.map(([n, b, j], i) => { const v = Math.max(0.4, b + j * Math.sin(t * (5 + i * 2.3) + i) * 0.6 + (Math.sin(t * 13 + i * 7) > 0.995 ? 2.5 : 0)); total += v; return [n, v]; });
+      hist[frame % 60] = total;
+      // frame conveyor: GOP of I/P/B frames sliding left, current lit
+      const cw = 26, gap = 6, off = (t * 60 % 1) * (cw + gap);
+      const n = Math.ceil(W / (cw + gap)) + 2;
+      for (let i = 0; i < n; i++) { const idx = Math.floor(t * 60) + i; const x = W - pad - i * (cw + gap) + off - cw; const type = idx % 12 === 0 ? 'I' : idx % 3 === 0 ? 'P' : 'B'; const cur = i === 1, over = total > 16.7; ctx.fillStyle = cur ? (over ? DARK : BG) : type === 'I' ? '#ffc4b8' : 'rgba(243,242,242,0.28)'; ctx.fillRect(x, pad, cw, cw); if (cur) { ctx.strokeStyle = BG; ctx.lineWidth = 2; ctx.strokeRect(x + 1, pad + 1, cw - 2, cw - 2); } ctx.fillStyle = cur ? (over ? BG : RED) : DARK; ctx.font = '800 11px Archivo'; ctx.textAlign = 'center'; ctx.fillText(type, x + cw / 2, pad + 17); ctx.textAlign = 'left'; }
+      ctx.fillStyle = BG; ctx.font = '600 10px Archivo'; label(ctx, 'INCOMING GOP  ·  I / P / B  ·  60 fps', pad, pad + cw + 16, W - pad * 2);
+      // big readout
+      const big = Math.min(150, W * 0.28, H * 0.2), by0 = pad + cw + 36;
+      ctx.font = `800 ${big}px Archivo`; ctx.letterSpacing = '-0.04em'; ctx.fillStyle = total > 16.7 ? DARK : BG;
+      const numTxt = total.toFixed(1); ctx.fillText(numTxt, pad - big * 0.05, by0 + big * 0.78); ctx.fillStyle = BG;
+      const numW = ctx.measureText(numTxt).width;
+      ctx.font = `800 ${big * 0.28}px Archivo`; ctx.letterSpacing = '0'; ctx.fillText('ms', pad + numW + big * 0.04, by0 + big * 0.78);
+      ctx.font = '600 12px Archivo'; label(ctx, `FRAME ${String(frame).padStart(7, '0')}   PTS ${(t * 90000) | 0}   BUDGET 16.7 ms   ${total < 16.7 ? 'ON TIME' : 'OVER BUDGET'}`, pad, by0 + big * 0.78 + 30, W - pad * 2);
+      // budget bar with stages
+      const by = by0 + big * 0.78 + 56, bh = 24, bw = W - pad * 2;
+      ctx.fillStyle = DARK; ctx.fillRect(pad, by, bw, bh);
+      let x = pad; seg.forEach(([nm, v], i) => { const w = bw * v / 16.7; ctx.fillStyle = i % 2 ? '#ffc4b8' : BG; ctx.fillRect(x, by, Math.max(0, w - 2), bh); if (w > 64) { ctx.fillStyle = DARK; ctx.font = '600 10px Archivo'; ctx.fillText(`${nm} ${v.toFixed(1)}`, x + 6, by + 16); } x += w; });
+      ctx.fillStyle = BG; ctx.font = '600 10px Archivo'; ctx.fillText('0', pad, by + bh + 16); ctx.textAlign = 'right'; ctx.fillText('16.7', pad + bw, by + bh + 16); ctx.textAlign = 'left';
+      // 60-frame history
+      const gy = by + bh + 40, gh = Math.max(50, H - gy - pad - 22), sw = bw / 60, line = gy + gh - gh * 16.7 / 20;
+      ctx.fillStyle = 'rgba(243,242,242,0.4)'; ctx.fillRect(pad, line, bw, 1);
+      for (let i = 0; i < 60; i++) { const v = hist[i], h = gh * Math.min(20, v) / 20, cur = i === frame % 60; ctx.fillStyle = cur ? BG : v > 16.7 ? DEEP : 'rgba(243,242,242,0.7)'; ctx.fillRect(pad + i * sw, gy + gh - h, sw - 2, h); }
+      ctx.fillStyle = BG; ctx.fillText('LAST 60 FRAMES · 1 s', pad, gy + gh + 16); ctx.textAlign = 'right'; ctx.fillText('16.7 ms', pad + bw, line - 6); ctx.textAlign = 'left';
+    });
+
+    // — Cosm: tiles + virtual camera following the puck —
+    reg(this.cosmRef, (ctx, W, H, t, frame, s) => {
+      const COLS = 9, ROWS = 5, tw = W / COLS, th = H / ROWS;
+      const dash = Math.pow(Math.sin(t * 0.5), 9);
+      const px = 0.5 + 0.38 * Math.sin(t * 0.3) + 0.1 * dash * Math.cos(t * 3), py = 0.5 + 0.3 * Math.sin(t * 0.5 + 1) * Math.cos(t * 0.2);
+      s.cx = (s.cx ?? 0.5) + (px - s.cx) * 0.07; s.cy = (s.cy ?? 0.5) + (py - s.cy) * 0.07;
+      const cw = W * 0.3, ch = cw * 9 / 16, rx = s.cx * W - cw / 2, ry = s.cy * H - ch / 2;
+      for (let i = 0; i < COLS; i++) for (let j = 0; j < ROWS; j++) { const x = i * tw, y = j * th, hit = x < rx + cw && x + tw > rx && y < ry + ch && y + th > ry; if (hit) { ctx.fillStyle = TINT; ctx.fillRect(x, y, tw, th); } ctx.strokeStyle = 'rgba(32,30,29,0.2)'; ctx.lineWidth = 1; ctx.strokeRect(x + 0.5, y + 0.5, tw, th); }
+      ctx.setLineDash([5, 5]); ctx.strokeStyle = INK; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(W / 2, 0); ctx.lineTo(W / 2, H); ctx.stroke(); ctx.setLineDash([]);
+      ctx.fillStyle = INK; ctx.font = '800 10px Archivo'; ctx.fillText('NVDEC 0', 8, H - 8); ctx.textAlign = 'right'; ctx.fillText('NVDEC 1', W - 8, H - 8); ctx.textAlign = 'left';
+      ctx.strokeStyle = RED; ctx.lineWidth = 2; ctx.strokeRect(rx, ry, cw, ch);
+      const lx = Math.min(Math.max(0, rx), W - 112), ly = Math.max(18, ry); ctx.fillStyle = RED; ctx.fillRect(lx, ly - 18, 112, 18); ctx.fillStyle = BG; ctx.fillText('VIRTUAL CAM 60 FPS', lx + 6, ly - 5);
+      ctx.fillStyle = RED; ctx.fillRect(px * W - 4, py * H - 4, 8, 8);
+      ctx.fillStyle = INK; label(ctx, `8K FISHEYE · 9×7 TILES · PTS ${(t * 90000) | 0}`, 8, 14, W / 2 - 20);
+    });
+
+    // — FOX: validation loop collapsing 6 min → 3 s, goroutine lanes —
+    reg(this.foxRef, (ctx, W, H, t, frame) => {
+      const cyc = (t % 6) / 6, e = cyc < 0.55 ? 0 : Math.min(1, (cyc - 0.55) / 0.3), ease = 1 - Math.pow(1 - e, 3);
+      const secs = 360 - (360 - 2.7) * ease, pad = 12, bw = W - pad * 2;
+      ctx.fillStyle = INK; ctx.font = '800 10px Archivo'; label(ctx, 'CHANNEL VALIDATION LOOP · ALL CHANNELS', pad, 16, bw);
+      ctx.fillStyle = 'rgba(32,30,29,0.15)'; ctx.fillRect(pad, 26, bw, 14); ctx.fillStyle = e < 1 ? INK : RED; ctx.fillRect(pad, 26, bw * secs / 360, 14);
+      ctx.font = `800 ${Math.min(44, W * 0.12)}px Archivo`; ctx.letterSpacing = '-0.03em'; ctx.fillStyle = e < 1 ? INK : RED;
+      const m = Math.floor(secs / 60), sc = secs % 60; ctx.fillText(`${m}:${sc.toFixed(1).padStart(4, '0')}`, pad - 2, 88); ctx.letterSpacing = '0';
+      ctx.fillStyle = INK; ctx.font = '600 10px Archivo'; label(ctx, e < 0.05 ? 'BEFORE · rebuilding shared context per goroutine' : e < 1 ? 'PROFILING · pprof · heap · trace · flame graph' : 'AFTER · shared context reused · −60% CPU / MEM', pad, 104, bw);
+      // goroutine lanes
+      const lanes = 12, ly = 116, lh = (H - ly - pad) / lanes;
+      for (let i = 0; i < lanes; i++) { const y = ly + i * lh; const speed = 0.3 + (1 - ease) * 0.0 + ease * 3; const ph = ((t * speed + i * 0.37) % 1); const w = bw * (0.06 + 0.12 * (1 - ease)); const x = pad + ph * (bw - w); ctx.fillStyle = 'rgba(32,30,29,0.08)'; ctx.fillRect(pad, y + 1, bw, lh - 2); ctx.fillStyle = e < 1 ? 'rgba(32,30,29,0.55)' : RED; ctx.fillRect(x, y + 1, w, lh - 2); }
+    });
+
+    // — projects —
+    const [sfRef, artRef, kioRef, rmRef] = this.pRefs;
+    reg(sfRef, (ctx, W, H, t) => { // websocket frames streaming as bytes
+      const bs = 12, gap = 3, per = bs + gap, off = (t * 90) % per, n = Math.ceil(W / per) + 2;
+      ctx.fillStyle = INK; ctx.font = '800 10px Archivo'; label(ctx, 'RFC 6455 · FRAME STREAM · MASKED', 8, 14, W - 16);
+      for (let row = 0; row < 3; row++) for (let i = 0; i < n; i++) { const idx = Math.floor(t * 90 / per) + i + row * 31; const x = W - i * per + off - bs, y = 34 + row * 30; const hdr = idx % 9 === 0, mask = idx % 9 > 0 && idx % 9 < 5; ctx.fillStyle = hdr ? RED : mask ? '#ffc4b8' : 'rgba(32,30,29,0.25)'; ctx.fillRect(x, y, bs, bs); if (hdr) { ctx.fillStyle = INK; ctx.font = '600 9px Archivo'; ctx.fillText(['FIN', 'TXT', 'BIN', 'PNG'][idx % 4], x, y + 22); } }
+      ctx.fillStyle = INK; ctx.font = '600 10px Archivo'; label(ctx, 'handshake → decode → inflate → WSReader', 8, H - 8, W - 16);
+    });
+    reg(artRef, (ctx, W, H, t) => { // blocks mined and chained
+      const bw = 76, gap = 22, per = bw + gap, prog = (t * 0.6) % 1, n = Math.ceil(W / per) + 2, base = Math.floor(t * 0.6);
+      ctx.fillStyle = INK; ctx.font = '800 10px Archivo'; label(ctx, 'PROOF OF WORK · SHA-256 · LONGEST CHAIN', 8, 14, W - 16);
+      for (let i = 0; i < n; i++) { const h = base - i, x = W - 16 - (i + 1) * per + prog * per, y = 40; if (h < 0) continue; const mining = i === 0; ctx.fillStyle = mining ? BG : TINT; ctx.fillRect(x, y, bw, 56); ctx.strokeStyle = mining ? RED : INK; ctx.lineWidth = 2; ctx.strokeRect(x, y, bw, 56); ctx.fillStyle = INK; ctx.font = '800 11px Archivo'; ctx.fillText(`#${h}`, x + 6, y + 16); ctx.font = '600 9px Archivo'; ctx.fillStyle = mining ? RED : INK; ctx.fillText(mining ? `nonce ${((t * 1e5) % 1e6) | 0}` : `00000${((h * 2654435761) >>> 0).toString(16).slice(0, 6)}`, x + 6, y + 32); ctx.fillStyle = INK; ctx.fillText(`${(h * 7) % 13 + 1} tx`, x + 6, y + 46); if (i > 0) { ctx.strokeStyle = INK; ctx.beginPath(); ctx.moveTo(x + bw, y + 28); ctx.lineTo(x + bw + gap, y + 28); ctx.stroke(); } }
+      ctx.fillStyle = INK; ctx.font = '600 10px Archivo'; label(ctx, 'server · miner · sync · broadcaster · discover', 8, H - 8, W - 16);
+    });
+    reg(kioRef, (ctx, W, H, t) => { // memory graph forming
+      ctx.fillStyle = INK; ctx.font = '800 10px Archivo'; label(ctx, 'HYBRID RETRIEVAL · VECTOR + BM25 → RRF → RERANK', 8, 14, W - 16);
+      const N = 22, pts = []; for (let i = 0; i < N; i++) { const a = i * 2.399 + t * 0.08, r = 0.25 + 0.7 * ((i * 0.618) % 1); pts.push([W / 2 + Math.cos(a) * r * W * 0.42, H / 2 + 6 + Math.sin(a * 1.3 + t * 0.2) * r * H * 0.28]); }
+      const q = Math.floor(t * 0.7) % N, qp = pts[q];
+      ctx.lineWidth = 1; pts.forEach((p, i) => { const d = Math.hypot(p[0] - qp[0], p[1] - qp[1]); if (i !== q && d < W * 0.3) { ctx.strokeStyle = `rgba(236,48,19,${0.9 - d / (W * 0.3)})`; ctx.beginPath(); ctx.moveTo(qp[0], qp[1]); ctx.lineTo(p[0], p[1]); ctx.stroke(); } });
+      pts.forEach((p, i) => { const d = Math.hypot(p[0] - qp[0], p[1] - qp[1]); const hit = d < W * 0.18; ctx.fillStyle = i === q ? RED : hit ? '#ae1800' : 'rgba(32,30,29,0.4)'; const s = i === q ? 10 : hit ? 7 : 5; ctx.fillRect(p[0] - s / 2, p[1] - s / 2, s, s); });
+      ctx.fillStyle = INK; ctx.font = '600 10px Archivo'; label(ctx, `query → top-k ${pts.filter(p => Math.hypot(p[0] - qp[0], p[1] - qp[1]) < W * 0.18).length - 1} chunks · rerank-2 · neighbors`, 8, H - 8, W - 16);
+    });
+    reg(rmRef, (ctx, W, H, t) => { // agent loop: tools firing, memory saved
+      const tools = ['search_jobs', 'score_jobs', 'recall_prefs', 'save_pref', 'apply', 'dismiss'];
+      ctx.fillStyle = INK; ctx.font = '800 10px Archivo'; label(ctx, 'AGENT LOOP · 18 TOOLS · DUAL-STORE MEMORY', 8, 14, W - 16);
+      const it = Math.floor(t * 1.2) % 8, cur = Math.floor(t * 1.2) % tools.length, colW = (W - 16) / tools.length;
+      tools.forEach((n, i) => { const x = 8 + i * colW, on = i === cur; ctx.fillStyle = on ? RED : 'rgba(32,30,29,0.12)'; ctx.fillRect(x, 28, colW - 4, 20); ctx.fillStyle = on ? BG : INK; ctx.font = '600 9px Archivo'; ctx.fillText(n.slice(0, Math.floor((colW - 10) / 5.5)), x + 4, 42); });
+      for (let i = 0; i < 8; i++) { ctx.fillStyle = i <= it ? RED : 'rgba(32,30,29,0.15)'; ctx.fillRect(8 + i * 18, 60, 14, 6); }
+      ctx.fillStyle = INK; ctx.font = '600 10px Archivo'; ctx.fillText(`iteration ${it + 1} / 8`, 8 + 8 * 18 + 6, 66);
+      const mem = ['hard_constraint · remote only', 'preference · Rust + Go', 'dislike · on-call rotations', 'outcome · offer accepted'];
+      mem.forEach((m, i) => { const vis = ((t * 0.25 + i * 0.25) % 1); ctx.fillStyle = `rgba(32,30,29,${0.35 + 0.65 * Math.sin(vis * Math.PI)})`; label(ctx, m, 8, 90 + i * 15, W - 84); });
+      ctx.fillStyle = RED; ctx.fillRect(W - 60, 84, 52, 52); ctx.fillStyle = BG; ctx.font = '800 9px Archivo'; ctx.fillText('MEM0', W - 52, 104); ctx.fillText('+ PG', W - 52, 118);
+    });
+
+    // — timeline playhead: sweep across 2015→2026 —
+    const roles = this.roles;
+    reg(this.tlRef, (ctx, W, H, t) => {
+      const y0 = 2015, y1 = 2026.75, X = y => (y - y0) / (y1 - y0) * W;
+      for (let y = 2015; y <= 2026; y++) { const x = X(y); ctx.fillStyle = 'rgba(32,30,29,0.35)'; ctx.fillRect(x, 0, 1, H); ctx.fillStyle = INK; ctx.font = '600 10px Archivo'; ctx.fillText(String(y), x + 4, 12); }
+      roles.forEach((r, i) => { const x = X(r.from), w = X(r.to) - x; ctx.fillStyle = i < 3 ? RED : 'rgba(32,30,29,0.35)'; ctx.fillRect(x, 20 + (i % 4) * 12, Math.max(4, w), 8); });
+      const ph = X(y0 + ((t * 0.9) % (y1 - y0))); ctx.fillStyle = INK; ctx.fillRect(ph, 0, 2, H);
+    });
+
+    // one loop, all canvases, only those on screen
+    let frame = 0; const t0 = performance.now();
+    const loop = now => {
+      const mode = this.props.motion ?? 'cinematic'; const speed = mode === 'calm' ? 0.5 : 1;
+      const t = (now - t0) / 1000 * speed; frame++;
+      canvases.forEach(o => { const r = o.c.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return; o.ctx.clearRect(0, 0, o.W, o.H); o.fn(o.ctx, o.W, o.H, t, frame, o.state); });
+      if (mode !== 'off') this._raf = requestAnimationFrame(loop); else this._stopped = true;
+    };
+    this._raf = requestAnimationFrame(loop); this._loop = loop;
+    const onScroll = () => { if (this._stopped) { this._stopped = false; this._raf = requestAnimationFrame(loop); } }; addEventListener('scroll', onScroll, { passive: true }); this._onScroll = onScroll;
+
+    // scroll-reveal + progress
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    this._io = io; document.querySelectorAll('[data-reveal],[data-reveal-rule]').forEach(el => io.observe(el));
+    const prog = () => { const p = this.progressRef.current; if (!p) return; const max = document.documentElement.scrollHeight - innerHeight; p.style.transform = `scaleX(${max > 0 ? Math.min(1, scrollY / max) : 0})`; }; prog(); addEventListener('scroll', prog, { passive: true }); this._prog = prog;
+    // counters
+    const t1 = performance.now(); const tick = now => { const p = Math.min(1, (now - t1) / 1400), e = 1 - Math.pow(1 - p, 3); this.setState({ repos: Math.round(80 * e), followers: Math.round(169 * e), stars: Math.round(75 * e) }); if (p < 1) requestAnimationFrame(tick); }; requestAnimationFrame(tick);
+  }
+  componentDidUpdate() { if (this._stopped && (this.props.motion ?? 'cinematic') !== 'off') { this._stopped = false; this._raf = requestAnimationFrame(this._loop); } }
+  componentWillUnmount() { cancelAnimationFrame(this._raf); this._ro && this._ro.disconnect(); this._io && this._io.disconnect(); removeEventListener('scroll', this._onScroll); removeEventListener('scroll', this._prog); }
+
+  roles = [
+    { from: 2025.85, to: 2026.75, period: 'Nov 2025 — present', role: 'AI Solutions Engineer (independent)', company: 'Freelance / consulting', stack: 'Rust · Python · FastAPI · pgvector · MCP · LangGraph' },
+    { from: 2025.35, to: 2026.75, period: 'May 2025 — present', role: 'Software Engineer, Real-Time Media', company: 'Kake @ Cosm', stack: 'Rust · Go · C++ · CUDA · WebRTC · AWS' },
+    { from: 2021.2, to: 2025.35, period: 'Mar 2021 — May 2025', role: 'Software Engineer, Live Streaming', company: 'X-Team @ FOX', stack: 'Go · Rust · TypeScript · Kubernetes · HLS · SRT' },
+    { from: 2020.2, to: 2021.2, period: 'Mar 2020 — Mar 2021', role: 'Blockchain Software Engineer', company: 'Tokenizer', stack: 'Solidity · EVM · Go · Rust · AWS' },
+    { from: 2019.7, to: 2021.2, period: 'Sep 2019 — Mar 2021', role: 'Senior DevOps Engineer', company: 'Accenture, The Dock (Dublin)', stack: 'Go · Python · AWS · Terraform · Kubernetes' },
+    { from: 2018, to: 2019.95, period: 'Jan 2018 — Dec 2019', role: 'Software Developer, IoT', company: 'IO-Shower', stack: 'C++ · Java · React Native · AWS IoT' },
+    { from: 2019.2, to: 2019.7, period: 'Mar 2019 — Sep 2019', role: 'Development Analyst', company: 'Tata Consultancy Services', stack: 'Java · Spring · Angular · PL/SQL' },
+    { from: 2017.85, to: 2019.2, period: 'Nov 2017 — Mar 2019', role: 'Development Consultant', company: 'CSG International', stack: 'Java · Python · Spring · Jenkins' },
+    { from: 2017.7, to: 2017.85, period: 'Sep 2017 — Nov 2017', role: 'Embedded Software Developer', company: 'Zoe Slots', stack: 'C++ · Qt · microcontrollers' },
+    { from: 2016.2, to: 2017.2, period: 'Mar 2016 — Mar 2017', role: 'Software Developer', company: 'LA2I — Intelligent Automation Lab', stack: 'Python · Qt · MySQL' },
+    { from: 2015, to: 2016.2, period: 'Jan 2015 — Mar 2016', role: 'Automation Developer', company: 'Jirehmaq Automação Industrial', stack: 'C · C++ · Arduino · Raspberry Pi' },
+  ];
+
+  renderVals() {
+    const [sf, art, kio, rm] = this.pRefs;
+    const dense = this.props.denseTimeline ?? true;
+    return {
+      heroRef: this.heroRef, progressRef: this.progressRef, cosmRef: this.cosmRef, foxRef: this.foxRef, tlRef: this.tlRef,
+      statRepos: `${this.state.repos}+`, statFollowers: String(this.state.followers), statStars: String(this.state.stars),
+      roles: dense ? this.roles : this.roles.slice(0, 5),
+      projects: [
+        { ref: sf, kicker: 'Rust · crates.io', meta: '★ 75', title: 'socket-flow', body: 'An async WebSocket library written from scratch on Tokio — RFC 6455 handshake, framing, masking, permessage-deflate, TLS and a split reader/writer. Passes the Autobahn suite for client and server.', stack: 'Rust · Tokio · tokio-rustls · flate2', href: 'https://github.com/felipemeriga/socket-flow', cta: 'View on GitHub →' },
+        { ref: art, kicker: 'Rust · P2P', meta: '★ 18', title: 'Artemis Network', body: 'A runnable blockchain node from the bytes up: SHA-256 proof of work, secp256k1 transactions, longest-valid-chain consensus, P2P discovery and a fee-prioritized mempool — five concurrent Tokio tasks sharing one chain.', stack: 'Rust · Tokio · secp256k1 · Sled', href: 'https://github.com/felipemeriga/artemis-network', cta: 'View on GitHub →' },
+        { ref: kio, kicker: 'AI · MCP', meta: 'OSS', title: 'Kioku (記憶)', body: 'A self-hosted second brain for coding agents. Agentic RAG with hybrid search (vector + BM25 → RRF → rerank), automatic session memory, task→model routing with prompt caching and a CI-gated eval harness.', stack: 'Python · FastAPI · pgvector · TypeScript · Claude', href: 'https://github.com/felipemeriga/kioku', cta: 'View on GitHub →' },
+        { ref: rm, kicker: 'AI · product', meta: 'Live', title: 'RoleMiner', body: 'An AI job hunter that learns from behaviour, not forms. An 18-tool agent loop over a dual-store memory — Mem0 for stated preferences, Postgres for behavioural signals — with decay, dedup, nudges and ~876 tests.', stack: 'Python · FastAPI · React 19 · Supabase · Anthropic · Mem0', href: 'https://roleminer.app/', cta: 'Open roleminer.app →' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+# ─ secrets (never commit) ─
+.npmrc
+.env
+.env.*
+*.pem
+*.key
+
+# ─ dependencies ─
+node_modules/
+
+# ─ build output ─
+dist/
+.astro/
+
+# ─ os / editor cruft ─
+.DS_Store
+**/.DS_Store
+*.log
+npm-debug.log*
+Thumbs.db

@@ -1,0 +1,42 @@
+---
+title: "Real-time video in Rust: a 16.7 ms frame budget"
+description: "What it means to build a live sports video player where every frame has to be decoded, cropped, dewarped and shipped in under 16.7 milliseconds."
+pubDate: 2026-03-05
+tags: ["Rust", "Real-time media", "GPU"]
+videoId: "aqz-KE-bpKQ"
+---
+
+import YouTube from '../components/YouTube.astro';
+
+At 60 frames per second you get **16.7 milliseconds** per frame. Everything —
+decode, process, encode, deliver — has to fit inside that window, every frame,
+or the viewer sees it. This is the constraint that shapes every decision in a
+real-time video pipeline.
+
+<YouTube id="aqz-KE-bpKQ" title="Demo: the frame-budget readout in action" />
+
+## Where the time goes
+
+On the interactive player at Cosm, a single frame runs through roughly:
+
+- **Decode** the 8K fisheye source (hardware NVDEC)
+- **Process** — crop the virtual camera, dewarp the lens distortion (CUDA)
+- **Encode** the output viewport (NVENC)
+- **Deliver** over WebRTC
+
+Keep the frame on the GPU the whole way through and you avoid the single most
+expensive thing you can do in this loop: copying frames back and forth between
+CPU and GPU memory.
+
+## Why Rust
+
+When the budget is this tight, you can't afford a garbage-collection pause or a
+surprise allocation in the hot path. Rust gives you predictable, no-GC control
+over memory and strong guarantees around concurrency — exactly what you want when
+the deadline is 16.7 ms and it never moves.
+
+> The whole discipline of real-time media is: know your budget, measure against it
+> every frame, and move expensive work off the critical path.
+
+More on the dual-NVDEC decode split and the auto-tally camera director in a
+follow-up post.

@@ -1,0 +1,42 @@
+---
+title: "From 6 minutes to 3 seconds: profiling a Go validation loop"
+description: "How pprof, heap analysis and flame graphs turned a 6-minute channel-validation loop into a 2–3 second one — and why the biggest win was work we were doing over and over."
+pubDate: 2026-02-18
+tags: ["Go", "Performance", "Distributed systems"]
+---
+
+At FOX I owned a service that validated the health of every live channel — encoding
+status, manifests, dynamic ad insertion, viewer telemetry — in a loop. When I picked
+it up, one full pass over all channels took about **six minutes**. That's a long time
+to be blind to a broken stream.
+
+## Measure first, don't guess
+
+The temptation is to start rewriting the parts that *look* slow. I didn't. I reached
+for Go's tooling instead:
+
+- **CPU profiles** (`pprof`) to see where wall-clock actually went
+- **Heap + allocation profiles** to find memory churn
+- **Execution traces** to see goroutine scheduling and contention
+- **Flame graphs** to make the hot paths obvious at a glance
+
+## The real culprit
+
+The hottest path wasn't the validation logic at all — it was **shared context we were
+rebuilding for every channel**. Each goroutine reconstructed the same initial data set
+before doing any real work. With hundreds of channels and a loop that ran continuously,
+that redundant setup dominated the profile.
+
+Building it once and sharing it across the validators collapsed the bulk of the cost.
+A handful of smaller wins followed the same pattern: allocations in a hot path, work
+that didn't need to be inside the loop.
+
+## The result
+
+The full validation loop went from **~6 minutes to ~2–3 seconds**, and CPU/memory
+dropped more than **60%**. The operational payoff mattered more than the number: the
+team could now see a channel's real state seconds after something went wrong, not
+minutes.
+
+The lesson I keep relearning: **the fastest code is the work you stop doing.** Profile,
+find the thing you're doing over and over, and do it once.
