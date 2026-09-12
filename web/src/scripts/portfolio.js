@@ -116,13 +116,13 @@
     ctx.strokeStyle = RED; ctx.lineWidth = 2; ctx.strokeRect(rx, ry, cw, ch);
     const lx = Math.min(Math.max(0, rx), W - 112), ly = Math.max(18, ry); ctx.fillStyle = RED; ctx.fillRect(lx, ly - 18, 112, 18); ctx.fillStyle = BG; ctx.fillText('VIRTUAL CAM 60 FPS', lx + 6, ly - 5);
     ctx.fillStyle = RED; ctx.fillRect(px * W - 4, py * H - 4, 8, 8);
-    ctx.fillStyle = INK; label(ctx, `8K FISHEYE · 9×7 TILES · PTS ${(t * 90000) | 0}`, 8, 14, W / 2 - 20);
+    ctx.fillStyle = INK; label(ctx, `NHL · 8K FISHEYE · 9×7 TILES · PTS ${(t * 90000) | 0}`, 8, 14, W / 2 - 20);
   });
 
   // — FOX: validation loop collapsing 6 min → 3 s, goroutine lanes —
   reg(document.getElementById('fox-canvas'), (ctx, W, H, t, frame) => {
     const cyc = (t % 6) / 6, e = cyc < 0.55 ? 0 : Math.min(1, (cyc - 0.55) / 0.3), ease = 1 - Math.pow(1 - e, 3);
-    const secs = 360 - (360 - 2.7) * ease, pad = 12, bw = W - pad * 2;
+    const secs = 360 - (360 - 10) * ease, pad = 12, bw = W - pad * 2;
     ctx.fillStyle = INK; ctx.font = '800 10px Archivo'; label(ctx, 'CHANNEL VALIDATION LOOP · ALL CHANNELS', pad, 16, bw);
     ctx.fillStyle = 'rgba(32,30,29,0.15)'; ctx.fillRect(pad, 26, bw, 14); ctx.fillStyle = e < 1 ? INK : RED; ctx.fillRect(pad, 26, bw * secs / 360, 14);
     ctx.font = `800 ${Math.min(44, W * 0.12)}px Archivo`; ctx.letterSpacing = '-0.03em'; ctx.fillStyle = e < 1 ? INK : RED;
