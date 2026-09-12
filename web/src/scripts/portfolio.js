@@ -79,20 +79,21 @@
   // — hero: the frame budget —
   const stages = [['DECODE', 3.6, 0.9], ['PROCESS', 4.2, 1.2], ['ENCODE', 4.0, 0.8], ['DELIVER', 1.4, 0.5]];
   const hist = new Array(60).fill(12);
-  reg(document.getElementById('hero-canvas'), (ctx, W, H, t, frame) => {
+  reg(document.getElementById('hero-canvas'), (ctx, W, H, t, frame, s) => {
     const pad = Math.min(40, W * 0.07);
-    let total = 0; const seg = stages.map(([n, b, j], i) => { const v = Math.max(0.4, b + j * Math.sin(t * (1.1 + i * 0.5) + i) * 0.6 + (Math.sin(t * 2.6 + i * 7) > 0.995 ? 2.5 : 0)); total += v; return [n, v]; });
+    let total = 0; const load = Math.max(0, Math.sin(t * 0.28 - 1)) * 0.9; const seg = stages.map(([n, b, j], i) => { const v = Math.max(0.4, b + j * Math.sin(t * (0.7 + i * 0.35) + i) * 0.75 + load); total += v; return [n, v]; });
+    s.over = s.over ? total > 16.2 : total > 17.2; const over = s.over;
     hist[frame % 60] = total;
     const cw = 26, gap = 6, gopSpeed = 8, off = (t * gopSpeed % 1) * (cw + gap);
     const n = Math.ceil(W / (cw + gap)) + 2;
-    for (let i = 0; i < n; i++) { const idx = Math.floor(t * gopSpeed) + i; const x = W - pad - i * (cw + gap) + off - cw; const type = idx % 12 === 0 ? 'I' : idx % 3 === 0 ? 'P' : 'B'; const cur = i === 1, over = total > 16.7; ctx.fillStyle = cur ? (over ? DARK : BG) : type === 'I' ? '#ffc4b8' : 'rgba(243,242,242,0.28)'; ctx.fillRect(x, pad, cw, cw); if (cur) { ctx.strokeStyle = BG; ctx.lineWidth = 2; ctx.strokeRect(x + 1, pad + 1, cw - 2, cw - 2); } ctx.fillStyle = cur ? (over ? BG : RED) : DARK; ctx.font = '800 11px Archivo'; ctx.textAlign = 'center'; ctx.fillText(type, x + cw / 2, pad + 17); ctx.textAlign = 'left'; }
+    for (let i = 0; i < n; i++) { const idx = Math.floor(t * gopSpeed) + i; const x = W - pad - i * (cw + gap) + off - cw; const type = idx % 12 === 0 ? 'I' : idx % 3 === 0 ? 'P' : 'B'; const cur = i === 1; ctx.fillStyle = cur ? (over ? DARK : BG) : type === 'I' ? '#ffc4b8' : 'rgba(243,242,242,0.28)'; ctx.fillRect(x, pad, cw, cw); if (cur) { ctx.strokeStyle = BG; ctx.lineWidth = 2; ctx.strokeRect(x + 1, pad + 1, cw - 2, cw - 2); } ctx.fillStyle = cur ? (over ? BG : RED) : DARK; ctx.font = '800 11px Archivo'; ctx.textAlign = 'center'; ctx.fillText(type, x + cw / 2, pad + 17); ctx.textAlign = 'left'; }
     ctx.fillStyle = BG; ctx.font = '600 10px Archivo'; label(ctx, 'INCOMING GOP  ·  I / P / B  ·  60 fps', pad, pad + cw + 16, W - pad * 2);
     const big = Math.min(150, W * 0.28, H * 0.2), by0 = pad + cw + 36;
-    ctx.font = `800 ${big}px Archivo`; ctx.letterSpacing = '-0.04em'; ctx.fillStyle = total > 16.7 ? DARK : BG;
+    ctx.font = `800 ${big}px Archivo`; ctx.letterSpacing = '-0.04em'; ctx.fillStyle = over ? DARK : BG;
     const numTxt = total.toFixed(1); ctx.fillText(numTxt, pad - big * 0.05, by0 + big * 0.78); ctx.fillStyle = BG;
     const numW = ctx.measureText(numTxt).width;
     ctx.font = `800 ${big * 0.28}px Archivo`; ctx.letterSpacing = '0'; ctx.fillText('ms', pad + numW + big * 0.04, by0 + big * 0.78);
-    ctx.font = '600 12px Archivo'; label(ctx, `FRAME ${String(frame).padStart(7, '0')}   PTS ${(t * 90000) | 0}   BUDGET 16.7 ms   ${total < 16.7 ? 'ON TIME' : 'OVER BUDGET'}`, pad, by0 + big * 0.78 + 30, W - pad * 2);
+    ctx.font = '600 12px Archivo'; label(ctx, `FRAME ${String(frame).padStart(7, '0')}   PTS ${(t * 90000) | 0}   BUDGET 16.7 ms   ${over ? 'OVER BUDGET' : 'ON TIME'}`, pad, by0 + big * 0.78 + 30, W - pad * 2);
     const by = by0 + big * 0.78 + 56, bh = 24, bw = W - pad * 2;
     ctx.fillStyle = DARK; ctx.fillRect(pad, by, bw, bh);
     let x = pad; seg.forEach(([nm, v], i) => { const w = bw * v / 16.7; ctx.fillStyle = i % 2 ? '#ffc4b8' : BG; ctx.fillRect(x, by, Math.max(0, w - 2), bh); if (w > 64) { ctx.fillStyle = DARK; ctx.font = '600 10px Archivo'; ctx.fillText(`${nm} ${v.toFixed(1)}`, x + 6, by + 16); } x += w; });
