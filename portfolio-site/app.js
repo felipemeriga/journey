@@ -81,9 +81,9 @@
   const hist = new Array(60).fill(12);
   reg(document.getElementById('hero-canvas'), (ctx, W, H, t, frame) => {
     const pad = Math.min(40, W * 0.07);
-    let total = 0; const seg = stages.map(([n, b, j], i) => { const v = Math.max(0.4, b + j * Math.sin(t * (1.9 + i * 0.9) + i) * 0.6 + (Math.sin(t * 4.5 + i * 7) > 0.995 ? 2.5 : 0)); total += v; return [n, v]; });
+    let total = 0; const seg = stages.map(([n, b, j], i) => { const v = Math.max(0.4, b + j * Math.sin(t * (1.1 + i * 0.5) + i) * 0.6 + (Math.sin(t * 2.6 + i * 7) > 0.995 ? 2.5 : 0)); total += v; return [n, v]; });
     hist[frame % 60] = total;
-    const cw = 26, gap = 6, gopSpeed = 14, off = (t * gopSpeed % 1) * (cw + gap);
+    const cw = 26, gap = 6, gopSpeed = 8, off = (t * gopSpeed % 1) * (cw + gap);
     const n = Math.ceil(W / (cw + gap)) + 2;
     for (let i = 0; i < n; i++) { const idx = Math.floor(t * gopSpeed) + i; const x = W - pad - i * (cw + gap) + off - cw; const type = idx % 12 === 0 ? 'I' : idx % 3 === 0 ? 'P' : 'B'; const cur = i === 1, over = total > 16.7; ctx.fillStyle = cur ? (over ? DARK : BG) : type === 'I' ? '#ffc4b8' : 'rgba(243,242,242,0.28)'; ctx.fillRect(x, pad, cw, cw); if (cur) { ctx.strokeStyle = BG; ctx.lineWidth = 2; ctx.strokeRect(x + 1, pad + 1, cw - 2, cw - 2); } ctx.fillStyle = cur ? (over ? BG : RED) : DARK; ctx.font = '800 11px Archivo'; ctx.textAlign = 'center'; ctx.fillText(type, x + cw / 2, pad + 17); ctx.textAlign = 'left'; }
     ctx.fillStyle = BG; ctx.font = '600 10px Archivo'; label(ctx, 'INCOMING GOP  ·  I / P / B  ·  60 fps', pad, pad + cw + 16, W - pad * 2);
