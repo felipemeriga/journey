@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <rect width="100" height="100" fill="#ec3013"/>
+  <!-- geometric "F" in the Modernist off-white, zero radius -->
+  <rect x="30" y="20" width="16" height="60" fill="#f3f2f2"/>
+  <rect x="30" y="20" width="44" height="16" fill="#f3f2f2"/>
+  <rect x="30" y="44" width="34" height="16" fill="#f3f2f2"/>
+</svg>
