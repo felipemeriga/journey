@@ -113,7 +113,7 @@ A self-hosted, per-repo **memory + knowledge system** that pairs with Claude Cod
 
 ### 💼 [Zeeker](highlights/personal/zeeker.md) — An AI job hunter with a memory
 An AI-powered job-discovery product built around an agent that **learns your preferences from behaviour** instead of a form. An Anthropic tool-calling loop (18 tools) over a **dual-store memory system** (Mem0 for stated preferences, Postgres for behavioural signals) with categorized/decaying/deduplicated memory, proactive save-preference nudges, outcome capture, a kanban application pipeline, Stripe billing, and ~876 tests (backend + frontend).
-`Python · FastAPI · React 19 · Supabase · Anthropic · Mem0 · Stripe` → [zeeker.business](https://zeeker.business/)
+`Python · FastAPI · React 19 · Supabase · Anthropic · Mem0 · Stripe` → [zeeker.business](https://zeeker.business/) · [github.com/felipemeriga/zeeker](https://github.com/felipemeriga/zeeker)
 
 ### 🔌 [socket-flow](highlights/personal/socket-flow.md) — Async WebSocket library for Rust ⭐ 75
 A **from-scratch RFC 6455 WebSocket implementation** on Tokio — handshake, framing, masking, opcodes, `permessage-deflate` compression, TLS, and a split reader/writer. Passes the **Autobahn Test Suite** for client and server, and benchmarked against `tokio-tungstenite` in Kubernetes with k6. Published on crates.io.

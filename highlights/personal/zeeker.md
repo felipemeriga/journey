@@ -214,4 +214,5 @@ Zeeker is the personal project where I went deepest on **agent design and applie
 
 It also reflects how I like to build a complete product: a real agent loop with correctness invariants, a considered memory architecture with graceful degradation, cost-aware model routing, billing and rate limiting, RLS-enforced multi-tenancy, and a test suite thorough enough to refactor against with confidence — all built solo.
 
+Repository: https://github.com/felipemeriga/zeeker
 Website: https://zeeker.business/
