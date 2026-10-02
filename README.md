@@ -111,9 +111,9 @@ Four projects that best represent my range — from applied AI to low-level syst
 A self-hosted, per-repo **memory + knowledge system** that pairs with Claude Code via MCP. Every session starts with the repo's briefing pre-loaded; every session ends with learnings auto-captured. Features an **agentic RAG pipeline** (LLM-orchestrated tool loop), **hybrid search** (vector + BM25 → RRF → Voyage Rerank-2 → neighbor expansion), a centralized task→model LLM router with prompt caching, a CI-gated eval harness (recall/MRR/nDCG + RAGAS), and a one-command CLI.
 `Python · FastAPI · TypeScript · React · pgvector · Supabase · MCP · Claude · Voyage AI` → [github.com/felipemeriga/kioku](https://github.com/felipemeriga/kioku)
 
-### 💼 [RoleMiner](highlights/personal/role-miner.md) — An AI job hunter with a memory
+### 💼 [Zeeker](highlights/personal/zeeker.md) — An AI job hunter with a memory
 An AI-powered job-discovery product built around an agent that **learns your preferences from behaviour** instead of a form. An Anthropic tool-calling loop (18 tools) over a **dual-store memory system** (Mem0 for stated preferences, Postgres for behavioural signals) with categorized/decaying/deduplicated memory, proactive save-preference nudges, outcome capture, a kanban application pipeline, Stripe billing, and ~876 tests (backend + frontend).
-`Python · FastAPI · React 19 · Supabase · Anthropic · Mem0 · Stripe` → [roleminer.app](https://roleminer.app/)
+`Python · FastAPI · React 19 · Supabase · Anthropic · Mem0 · Stripe` → [zeeker.business](https://zeeker.business/)
 
 ### 🔌 [socket-flow](highlights/personal/socket-flow.md) — Async WebSocket library for Rust ⭐ 75
 A **from-scratch RFC 6455 WebSocket implementation** on Tokio — handshake, framing, masking, opcodes, `permessage-deflate` compression, TLS, and a split reader/writer. Passes the **Autobahn Test Suite** for client and server, and benchmarked against `tokio-tungstenite` in Kubernetes with k6. Published on crates.io.
@@ -144,7 +144,7 @@ A complete, runnable **blockchain node** implemented from the bytes up: SHA-256 
 ### Role details
 
 **AI Solutions Engineer — Independent (Freelance / Consulting)** · *Nov 2025 – Present*
-Designing and building AI applications, developer tools, and backend services in Rust and Python. Built [RoleMiner](https://roleminer.app/) and [Kioku](https://github.com/felipemeriga/kioku); designed RAG and agent workflows covering retrieval, routing, context management, structured outputs, and evaluation; shipped reliable, maintainable, cloud-deployed backends.
+Designing and building AI applications, developer tools, and backend services in Rust and Python. Built [Zeeker](https://zeeker.business/) and [Kioku](https://github.com/felipemeriga/kioku); designed RAG and agent workflows covering retrieval, routing, context management, structured outputs, and evaluation; shipped reliable, maintainable, cloud-deployed backends.
 `Rust · Python · FastAPI · PostgreSQL · pgvector · Qdrant · Docker · AWS · LLMs · RAG · MCP · LangGraph`
 
 **Software Engineer @ Cosm (via Kake)** · *May 2025 – Present*
@@ -264,7 +264,7 @@ This repository (`journey`) is a consolidated record of my career. Contents:
 │   │   └── fox.md                     ← FOX: live-streaming backend + perf work (deep dive)
 │   └── personal/
 │       ├── kioku.md                   ← Kioku: agentic RAG second brain
-│       ├── role-miner.md              ← RoleMiner: AI job hunter with memory
+│       ├── zeeker.md              ← Zeeker: AI job hunter with memory
 │       ├── socket-flow.md             ← socket-flow: Rust WebSocket library
 │       └── artemis-network.md         ← Artemis: from-scratch blockchain
 ├── linkedin/

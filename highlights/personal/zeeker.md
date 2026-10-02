@@ -1,8 +1,8 @@
-# RoleMiner — An AI Job Hunter With a Memory
+# Zeeker — An AI Job Hunter With a Memory
 
 ## Project Overview
 
-**RoleMiner** is a personal project I designed and built end-to-end: an opinionated, single-user AI job hunter built around an **agent that remembers you**.
+**Zeeker** is a personal project I designed and built end-to-end: an opinionated, single-user AI job hunter built around an **agent that remembers you**.
 
 The premise is simple but demanding: instead of forcing the user to fill in a preferences form, the system should **get better at you the more you use it**. Every action — every search, dismissal, application, and outcome — is a signal that flows back into the agent's context. Ask it "find me senior Rust roles in EU TZ, no on-call" and it searches structured, AI-enriched job postings, tracks each application through a kanban pipeline, and progressively learns what you actually want.
 
@@ -29,7 +29,7 @@ The differentiator, and the part I care about most, is the memory system: turnin
 
 ## Architecture
 
-RoleMiner is a multi-service application: a FastAPI backend hosting the agent loop, a React SPA, a Supabase/Postgres data layer, and two external intelligence sources (Anthropic for reasoning, Mem0 for long-term memory), fed by a job-data provider.
+Zeeker is a multi-service application: a FastAPI backend hosting the agent loop, a React SPA, a Supabase/Postgres data layer, and two external intelligence sources (Anthropic for reasoning, Mem0 for long-term memory), fed by a job-data provider.
 
 ```text
                                   ┌─────────────────┐
@@ -91,7 +91,7 @@ Everything is streamed to the frontend as typed SSE events (`text`, `tool_use`, 
 
 ## The Memory System (the differentiator)
 
-The most interesting engineering in RoleMiner is a **two-store memory design** that separates what the user *said* from what the user *did*:
+The most interesting engineering in Zeeker is a **two-store memory design** that separates what the user *said* from what the user *did*:
 
 | Store | Purpose | Lifetime |
 |---|---|---|
@@ -210,8 +210,8 @@ Everything here was designed and built by me. The parts I'm most proud of:
 
 ## Project Significance
 
-RoleMiner is the personal project where I went deepest on **agent design and applied memory systems**. Beyond wiring an LLM to some tools, it forced me to solve the hard problems that make an agent genuinely useful over time: how to bound and prioritize context under a token budget, how to age out stale knowledge without losing durable facts, how to deduplicate restatements semantically, and how to turn passive behavioural signals into learned preferences without nagging the user or writing memory behind their back.
+Zeeker is the personal project where I went deepest on **agent design and applied memory systems**. Beyond wiring an LLM to some tools, it forced me to solve the hard problems that make an agent genuinely useful over time: how to bound and prioritize context under a token budget, how to age out stale knowledge without losing durable facts, how to deduplicate restatements semantically, and how to turn passive behavioural signals into learned preferences without nagging the user or writing memory behind their back.
 
 It also reflects how I like to build a complete product: a real agent loop with correctness invariants, a considered memory architecture with graceful degradation, cost-aware model routing, billing and rate limiting, RLS-enforced multi-tenancy, and a test suite thorough enough to refactor against with confidence — all built solo.
 
-Repository: https://github.com/felipemeriga/role-miner
+Website: https://zeeker.business/

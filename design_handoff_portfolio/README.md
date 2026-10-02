@@ -50,7 +50,7 @@ Two articles, grid `auto-fit minmax(min(100%,340px),1fr)`, column-gap `clamp(16p
 ### 02 — Featured projects (#projects)
 H2 "From the bytes up: protocols, consensus, and agents that remember."
 Grid `auto-fit minmax(260px,1fr)`, 2px gap filled with divider color (cells have ground bg → reads as a ruled table). Each card: kicker row (kicker + right-aligned meta, nowrap), 150px canvas motif, H3 22px, body 14px/22px, stack line 12px neutral-700, full-width `.btn-secondary`.
-Cards (data array `projects` in the logic class): socket-flow (★ 75), Artemis Network (★ 18), Kioku (記憶), RoleMiner → roleminer.app.
+Cards (data array `projects` in the logic class): socket-flow (★ 75), Artemis Network (★ 18), Kioku (記憶), Zeeker → zeeker.business.
 
 ### 03 — Career timeline (#timeline)
 H2 "2015 → now. Industrial automation to GPU video." 72px canvas strip (year ticks 2015–2026, role bars, sweeping playhead), then rows grid `minmax(120px,160px) 1.2fr 1fr` — period (13px neutral) | **role** — company | stack (13px neutral), 1px rule between rows. 11 roles in the `roles` array (with numeric from/to used by the canvas).
@@ -76,7 +76,7 @@ Colors used on canvases: INK `#201e1d`, RED `#ec3013`, BG `#f3f2f2`, TINT `#ffe0
 4. **socket-flow**: three rows of 12px byte squares streaming left; header bytes red with FIN/TXT/BIN/PNG tag, masked bytes tint-300.
 5. **Artemis**: 76px blocks slide left every ~1.7 s; newest block outlined red with a spinning nonce; older blocks show #height, 00000-prefixed hash, tx count, linked by rules.
 6. **Kioku**: 22 nodes on slow orbit; the query node (red) cycles; edges fade by distance; hits within radius turn accent-700; caption shows top-k count.
-7. **RoleMiner**: 6 tool chips, current one red; 8 iteration pips; 4 memory lines breathing in opacity; "MEM0 + PG" red square.
+7. **Zeeker**: 6 tool chips, current one red; 8 iteration pips; 4 memory lines breathing in opacity; "MEM0 + PG" red square.
 8. **Timeline strip**: year ticks, role bars (first three red), playhead sweeps 2015→2026 every ~13 s.
 Scroll choreography: elements with `data-reveal` start opacity 0, translateY 18px; on IntersectionObserver (threshold .15, rootMargin -8% bottom) animate 0.7 s `cubic-bezier(.2,.7,.2,1)` to visible, once. Hero lines stagger .05/.18/.31 s, intro .45 s, buttons .55 s. `prefers-reduced-motion` disables all reveals (canvases may keep running or freeze at a frame).
 States: `:focus-visible` 2px accent outline offset 2px; link hover accent-600; button states per styles.css.

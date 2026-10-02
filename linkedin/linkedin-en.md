@@ -39,7 +39,7 @@ Alongside my full-time role, I build AI applications through independent consult
 
 **Recent projects:**
 
-- **RoleMiner** — An AI-powered job discovery platform that uses persistent memory to learn job preferences, search and organize opportunities, and support the application workflow. https://roleminer.app/
+- **Zeeker** — An AI-powered job discovery platform that uses persistent memory to learn job preferences, search and organize opportunities, and support the application workflow. https://zeeker.business/
 - **Kioku** — An open-source memory layer for AI assistants, with semantic search, episodic memory, MCP integration, and long-term context across sessions. https://github.com/felipemeriga/kioku
 - **Artemis Network** — An open-source Rust project exploring blockchain protocols, decentralized networking, and distributed systems. https://github.com/felipemeriga/artemis-network
 
@@ -59,7 +59,7 @@ United States
 
 Designing and building AI applications, developer tools, and backend services with Rust and Python.
 
-- Built RoleMiner, a job-discovery product that combines an LLM-based assistant, persistent user memory, structured job extraction, search, and application tracking. https://roleminer.app/
+- Built Zeeker, a job-discovery product that combines an LLM-based assistant, persistent user memory, structured job extraction, search, and application tracking. https://zeeker.business/
 - Built Kioku, an open-source memory layer for AI assistants with semantic retrieval, episodic memory, MCP integration, and long-term context management. https://github.com/felipemeriga/kioku
 - Designed RAG and agent workflows involving document retrieval, routing, context management, structured outputs, and evaluation.
 - Built backend services for AI applications with an emphasis on reliability, maintainability, and cloud deployment.

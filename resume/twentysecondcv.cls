@@ -274,9 +274,9 @@
 
         \vspace{2mm}
         \begin{itemize}
-          \item \href{https://roleminer.app/}{\underline{\textbf{RoleMiner}}} \\
+          \item \href{https://zeeker.business/}{\underline{\textbf{Zeeker}}} \\
                 {\footnotesize AI job-discovery platform with persistent memory, semantic search, and application tracking.} \\
-                {\scriptsize\color{black!55} roleminer.app}
+                {\scriptsize\color{black!55} zeeker.business}
           \vspace{2mm}
           \item \href{https://github.com/felipemeriga/kioku}{\underline{\textbf{Kioku}}} \\
                 {\footnotesize Open-source memory layer for AI assistants -- semantic \& episodic memory, MCP, long-term context.} \\
